@@ -1,12 +1,13 @@
+from textwrap import dedent
 
+html = dedent("""
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sky Creatives — Premium Design Agency</title>
+<title>Sky Creatives | Premium Design Agency</title>
 
-<!-- Google Font -->
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
 
 <style>
@@ -20,28 +21,25 @@ scroll-behavior:smooth;
 }
 
 body{
-background:#0b0c10;
+background:linear-gradient(180deg,#0b0c10,#111827);
 color:white;
 }
 
-/* NAVBAR */
-
 nav{
-position:fixed;
-width:100%;
+position:sticky;
 top:0;
 display:flex;
 justify-content:space-between;
 align-items:center;
 padding:20px 8%;
-background:rgba(0,0,0,0.4);
-backdrop-filter:blur(10px);
+background:rgba(0,0,0,0.5);
+backdrop-filter:blur(12px);
 z-index:1000;
 }
 
 .logo{
 font-weight:800;
-font-size:24px;
+font-size:22px;
 letter-spacing:2px;
 }
 
@@ -49,7 +47,6 @@ nav a{
 color:white;
 text-decoration:none;
 margin-left:30px;
-font-weight:500;
 transition:.3s;
 }
 
@@ -57,22 +54,19 @@ nav a:hover{
 color:#66fcf1;
 }
 
-/* HERO */
-
 .hero{
-height:100vh;
+height:95vh;
 display:flex;
 flex-direction:column;
 justify-content:center;
 align-items:center;
 text-align:center;
 padding:0 20px;
-background: radial-gradient(circle at top, #1f2833, #0b0c10);
 }
 
 .hero h1{
 font-size:64px;
-font-weight:800;
+max-width:900px;
 line-height:1.1;
 animation:fadeUp 1s ease forwards;
 }
@@ -81,58 +75,56 @@ animation:fadeUp 1s ease forwards;
 margin-top:20px;
 font-size:20px;
 color:#c5c6c7;
-max-width:700px;
+max-width:650px;
 animation:fadeUp 1.4s ease forwards;
 }
 
 .cta{
 margin-top:40px;
-padding:14px 32px;
+padding:16px 34px;
 border-radius:40px;
 border:none;
 background:#66fcf1;
 color:black;
-font-weight:600;
+font-weight:700;
 cursor:pointer;
 transition:.3s;
-animation:fadeUp 1.8s ease forwards;
 }
 
 .cta:hover{
-transform:translateY(-5px);
-box-shadow:0 10px 30px rgba(102,252,241,.35);
+transform:translateY(-6px);
+box-shadow:0 20px 40px rgba(102,252,241,.35);
 }
-
-/* PORTFOLIO */
 
 .section{
 padding:120px 8%;
 }
 
 .section-title{
-font-size:40px;
-margin-bottom:60px;
+font-size:42px;
 text-align:center;
+margin-bottom:70px;
 }
 
 .grid{
 display:grid;
-grid-template-columns:repeat(auto-fit, minmax(280px, 1fr));
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
 gap:30px;
 }
 
 .card{
-background:#14161c;
-border-radius:18px;
+border-radius:20px;
 overflow:hidden;
-position:relative;
-transition:.4s;
 cursor:pointer;
+position:relative;
+background:#161b22;
+transition:.4s;
 }
 
 .card img{
 width:100%;
-display:block;
+height:340px;
+object-fit:cover;
 transition:.6s;
 }
 
@@ -145,9 +137,9 @@ content:"View Project";
 position:absolute;
 inset:0;
 display:flex;
-align-items:center;
 justify-content:center;
-background:rgba(0,0,0,.6);
+align-items:center;
+background:rgba(0,0,0,.65);
 opacity:0;
 transition:.4s;
 font-weight:600;
@@ -158,8 +150,6 @@ letter-spacing:1px;
 opacity:1;
 }
 
-/* ABOUT */
-
 .about{
 display:grid;
 grid-template-columns:1fr 1fr;
@@ -167,44 +157,30 @@ gap:60px;
 align-items:center;
 }
 
-.about h2{
-font-size:38px;
-margin-bottom:20px;
-}
-
 .about p{
 color:#c5c6c7;
 line-height:1.7;
 }
 
-/* CONTACT */
-
 .contact{
 text-align:center;
 }
-.card img{
-  width:100%;
-  height:300px;
-  object-fit:cover;
-  border-radius:18px;
-}
-.contact button{
+
+.contact-btn{
 margin-top:30px;
-padding:14px 28px;
+padding:15px 30px;
 border-radius:30px;
-border:none;
 background:#45a29e;
+border:none;
 color:white;
 font-weight:600;
 cursor:pointer;
 transition:.3s;
 }
 
-.contact button:hover{
-transform:translateY(-4px);
+.contact-btn:hover{
+transform:translateY(-5px);
 }
-
-/* FOOTER */
 
 footer{
 text-align:center;
@@ -212,24 +188,9 @@ padding:40px;
 color:#aaa;
 }
 
-/* ANIMATIONS */
-
-@keyframes fadeUp{
-from{
-opacity:0;
-transform:translateY(40px);
-}
-to{
-opacity:1;
-transform:translateY(0);
-}
-}
-
-/* SCROLL REVEAL */
-
 .reveal{
 opacity:0;
-transform:translateY(40px);
+transform:translateY(60px);
 transition:1s;
 }
 
@@ -238,69 +199,63 @@ opacity:1;
 transform:translateY(0);
 }
 
-/* MOBILE */
+@keyframes fadeUp{
+from{opacity:0;transform:translateY(40px);}
+to{opacity:1;transform:translateY(0);}
+}
+
+.modal{
+display:none;
+position:fixed;
+z-index:2000;
+left:0;
+top:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.92);
+justify-content:center;
+align-items:center;
+}
+
+.modal-content{
+max-width:95%;
+max-height:90%;
+border-radius:14px;
+animation:zoom .3s ease;
+}
+
+.close{
+position:absolute;
+top:25px;
+right:40px;
+font-size:40px;
+color:white;
+cursor:pointer;
+}
+
+@keyframes zoom{
+from{transform:scale(.8);opacity:0;}
+to{transform:scale(1);opacity:1;}
+}
 
 @media(max-width:900px){
-.hero h1{
-font-size:42px;
-}
-.about{
-grid-template-columns:1fr;
-}
-}
 
+.hero h1{font-size:42px;}
 
-  /* MODAL BACKGROUND */
-.modal{
-  display:none;
-  position:fixed;
-  z-index:2000;
-  left:0;
-  top:0;
-  width:100%;
-  height:100%;
-  background:rgba(0,0,0,0.9);
-  justify-content:center;
-  align-items:center;
-}
+.about{grid-template-columns:1fr;}
 
-/* FULL IMAGE */
-.modal-content{
-  max-width:95%;
-  max-height:90%;
-  border-radius:12px;
-  animation:zoomIn .3s ease;
-}
+.section{padding:90px 6%;}
 
-/* CLOSE BUTTON */
-.close{
-  position:absolute;
-  top:20px;
-  right:30px;
-  color:white;
-  font-size:36px;
-  font-weight:bold;
-  cursor:pointer;
-}
-
-/* ANIMATION */
-@keyframes zoomIn{
-  from{
-    transform:scale(0.8);
-    opacity:0;
-  }
-  to{
-    transform:scale(1);
-    opacity:1;
-  }
 }
 
 </style>
 </head>
+
 <body>
 
 <nav>
 <div class="logo">SKY CREATIVES</div>
+
 <div>
 <a href="#portfolio">Portfolio</a>
 <a href="#about">About</a>
@@ -309,108 +264,114 @@ grid-template-columns:1fr;
 </nav>
 
 <section class="hero">
-<h1>Design That Makes Brands Unforgettable</h1>
-<p>We craft premium visuals, brand identities, and digital experiences that elevate businesses and captivate audiences.</p>
-<button class="cta" onclick="document.getElementById('portfolio').scrollIntoView()">See Our Work</button>
+<h1>We Design Brands That People Remember.</h1>
+<p>Helping businesses stand out through strategic, modern, and premium design experiences.</p>
+
+<button class="cta" onclick="document.getElementById('portfolio').scrollIntoView()">
+View Portfolio
+</button>
 </section>
 
 <section id="portfolio" class="section">
+
 <h2 class="section-title reveal">Featured Work</h2>
- <div class="grid">
-<div class="card reveal"><img src="1.jpeg"></div>
-<div class="card reveal"><img src="t3.jpg"></div>
-<div class="card reveal"><img src="t2.jpg"></div>
-<div class="card reveal"><img src="pizza.png"></div>
-<div class="card reveal"><img src="add.jpg"></div>
-<div class="card reveal"><img src="logo.png"></div>
+
+<div class="grid">
+
+<div class="card reveal"><img src="images/design1.jpg"></div>
+<div class="card reveal"><img src="images/design2.jpg"></div>
+<div class="card reveal"><img src="images/design3.jpg"></div>
+<div class="card reveal"><img src="images/design4.jpg"></div>
+<div class="card reveal"><img src="images/design5.jpg"></div>
+<div class="card reveal"><img src="images/design6.jpg"></div>
+
 </div>
 </section>
 
 <section id="about" class="section about">
+
 <div class="reveal">
 <h2>We Design With Purpose</h2>
-<p>Sky Creatives is a modern design agency focused on building powerful brand experiences. 
-We combine strategy, creativity, and technology to deliver designs that not only look stunning but drive real business impact.</p>
+<p>Sky Creatives is a modern design agency focused on building powerful brand identities and visual experiences that drive results.</p>
 </div>
 
 <div class="reveal">
-<p>✔ Brand Identity<br>
-✔ Graphic Design<br>
-✔ Marketing Visuals<br>
-✔ Web Design<br><br>
-Our mission is simple — help brands stand out in a crowded world.</p>
+<p>
+✔ Brand Identity<br><br>
+✔ Logo Design<br><br>
+✔ Marketing Graphics<br><br>
+✔ Web Visuals
+</p>
 </div>
+
 </section>
 
 <section id="contact" class="section contact reveal">
+
 <h2 class="section-title">Let's Build Something Great</h2>
-<p>Ready to elevate your brand? Get in touch and let's create magic together.</p>
-  <button onclick="window.open('skycreatives_premium_redesign.html', '_blank')">
-  Contact Us
+<p>Ready to elevate your brand? Get in touch today.</p>
+
+<button class="contact-btn"
+onclick="window.open('mailto:youremail@example.com','_blank')">
+Contact Us
 </button>
+
 </section>
 
 <footer>
 © 2026 Sky Creatives. All rights reserved.
 </footer>
 
-<script>
+<div id="imageModal" class="modal">
+<span class="close">&times;</span>
+<img class="modal-content" id="modalImg">
+</div>
 
-// Scroll reveal animation
+<script>
 
 const reveals = document.querySelectorAll('.reveal');
 
 window.addEventListener('scroll', () => {
 reveals.forEach(el => {
-const windowHeight = window.innerHeight;
-const revealTop = el.getBoundingClientRect().top;
-
-if(revealTop < windowHeight - 100){
+if(el.getBoundingClientRect().top < window.innerHeight - 100){
 el.classList.add('active');
 }
 });
 });
-<script>
+
 const modal = document.getElementById("imageModal");
 const modalImg = document.getElementById("modalImg");
 const closeBtn = document.querySelector(".close");
 
-// Open modal when image is clicked
 document.querySelectorAll(".card img").forEach(img => {
-  img.addEventListener("click", () => {
-    modal.style.display = "flex";
-    modalImg.src = img.src;
-  });
+img.addEventListener("click", () => {
+modal.style.display = "flex";
+modalImg.src = img.src;
+});
 });
 
-// Close modal
-closeBtn.onclick = () => {
-  modal.style.display = "none";
-};
+closeBtn.onclick = () => modal.style.display = "none";
 
-// Close when clicking outside image
 modal.onclick = (e) => {
-  if(e.target === modal){
-    modal.style.display = "none";
-  }
+if(e.target === modal){
+modal.style.display = "none";
+}
 };
-</script>
+
+document.addEventListener("keydown", (e)=>{
+if(e.key === "Escape"){
+modal.style.display = "none";
+}
+});
 
 </script>
-<!-- Image Modal -->
-<div id="imageModal" class="modal">
-  <span class="close">&times;</span>
-  <img class="modal-content" id="modalImg">
-</div>
 
 </body>
 </html>
+""")
 
+file_path = "/mnt/data/skycreatives_ELITE_full_site.html"
+with open(file_path, "w", encoding="utf-8") as f:
+    f.write(html)
 
-
-
-
-
-
-
-
+file_path
