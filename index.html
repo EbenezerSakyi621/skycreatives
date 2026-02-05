@@ -3,270 +3,209 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Sky Creatives | Premium Design Agency</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;800&display=swap" rel="stylesheet">
 
 <style>
+
 *{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  font-family:'Inter', sans-serif;
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Inter', sans-serif;
 }
 
 body{
-  background:linear-gradient(180deg,#0b0c10,#111827);
-  color:white;
-  scroll-behavior:smooth;
+background:#0b0c10;
+color:white;
 }
 
 /* NAVBAR */
+
 nav{
-  position:sticky;
-  top:0;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  padding:20px 8%;
-  background:rgba(0,0,0,0.5);
-  backdrop-filter:blur(12px);
-  z-index:1000;
+position:sticky;
+top:0;
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:20px 8%;
+background:rgba(0,0,0,.6);
+backdrop-filter:blur(10px);
 }
 
 .logo{
-  font-weight:800;
-  font-size:22px;
-  letter-spacing:2px;
+font-size:22px;
+font-weight:800;
+letter-spacing:2px;
 }
 
 nav a{
-  color:white;
-  text-decoration:none;
-  margin-left:30px;
-  transition:.3s;
+color:white;
+text-decoration:none;
+margin-left:30px;
 }
 
 nav a:hover{
-  color:#66fcf1;
+color:#66fcf1;
 }
 
 /* HERO */
+
 .hero{
-  height:95vh;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  align-items:center;
-  text-align:center;
-  padding:0 20px;
+height:90vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+text-align:center;
+padding:20px;
 }
 
 .hero h1{
-  font-size:64px;
-  max-width:900px;
-  line-height:1.1;
-  animation:fadeUp 1s ease forwards;
+font-size:60px;
+max-width:850px;
 }
 
 .hero p{
-  margin-top:20px;
-  font-size:20px;
-  color:#c5c6c7;
-  max-width:650px;
-  animation:fadeUp 1.4s ease forwards;
+margin-top:20px;
+color:#c5c6c7;
+font-size:20px;
+max-width:600px;
 }
 
 .cta{
-  margin-top:40px;
-  padding:16px 34px;
-  border-radius:40px;
-  border:none;
-  background:#66fcf1;
-  color:black;
-  font-weight:700;
-  cursor:pointer;
-  transition:.3s;
-}
-
-.cta:hover{
-  transform:translateY(-6px);
-  box-shadow:0 20px 40px rgba(102,252,241,.35);
+margin-top:40px;
+padding:15px 30px;
+border:none;
+border-radius:30px;
+background:#66fcf1;
+color:black;
+font-weight:700;
+cursor:pointer;
 }
 
 /* SECTIONS */
+
 .section{
-  padding:120px 8%;
+padding:100px 8%;
 }
 
-.section-title{
-  font-size:42px;
-  text-align:center;
-  margin-bottom:70px;
+.title{
+text-align:center;
+font-size:40px;
+margin-bottom:60px;
 }
 
-/* PORTFOLIO */
+/* PORTFOLIO GRID */
+
 .grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-  gap:30px;
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+gap:25px;
 }
 
 .card{
-  border-radius:20px;
-  overflow:hidden;
-  cursor:pointer;
-  position:relative;
-  background:#161b22;
+overflow:hidden;
+border-radius:18px;
+cursor:pointer;
 }
 
 .card img{
-  width:100%;
-  height:340px;
-  object-fit:cover;
-  transition:.6s;
+width:100%;
+height:320px;
+object-fit:cover;
+transition:.4s;
 }
 
 .card:hover img{
-  transform:scale(1.1);
+transform:scale(1.08);
 }
 
-.card::after{
-  content:"View Project";
-  position:absolute;
-  inset:0;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  background:rgba(0,0,0,.65);
-  opacity:0;
-  transition:.4s;
-  font-weight:600;
-}
+/* POPUP (THIS IS THE FULLSCREEN IMAGE SYSTEM) */
 
-.card:hover::after{
-  opacity:1;
-}
-
-/* ABOUT */
-.about{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:60px;
-}
-
-.about p{
-  color:#c5c6c7;
-  line-height:1.7;
-}
-
-/* CONTACT */
-.contact{
-  text-align:center;
-}
-
-.contact-btn{
-  margin-top:30px;
-  padding:15px 30px;
-  border-radius:30px;
-  background:#45a29e;
-  border:none;
-  color:white;
-  font-weight:600;
-  cursor:pointer;
-}
-
-/* FOOTER */
-footer{
-  text-align:center;
-  padding:40px;
-  color:#aaa;
-}
-
-/* REVEAL */
-.reveal{
-  opacity:0;
-  transform:translateY(60px);
-  transition:1s;
-}
-
-.reveal.active{
-  opacity:1;
-  transform:translateY(0);
-}
-
-/* MODAL */
-.modal{
-  display:none;
-  position:fixed;
-  inset:0;
-  background:rgba(0,0,0,.92);
-  z-index:2000;
-  justify-content:center;
-  align-items:center;
-}
-
-.modal-content{
-  max-width:95%;
-  max-height:90%;
-  border-radius:14px;
-  animation:zoom .3s ease;
-}
-
-.close{
-  position:absolute;
-  top:25px;
-  right:40px;
-  font-size:40px;
-  cursor:pointer;
-}
-
-@keyframes fadeUp{
-  from{opacity:0;transform:translateY(40px);}
-  to{opacity:1;transform:translateY(0);}
-}
-
-@keyframes zoom{
-  from{transform:scale(.8);opacity:0;}
-  to{transform:scale(1);opacity:1;}
-}
-
-/* MOBILE */
-@media(max-width:900px){
-  .hero h1{font-size:42px;}
-  .about{grid-template-columns:1fr;}
-  .section{padding:90px 6%;}
-}
-
-  /* POPUP BACKGROUND */
 #imagePopup{
-    display:none;
-    position:fixed;
-    top:0;
-    left:0;
-    width:100%;
-    height:100%;
-    background:rgba(0,0,0,0.95);
-    justify-content:center;
-    align-items:center;
-    z-index:9999;
+display:none;
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,.95);
+justify-content:center;
+align-items:center;
+z-index:9999;
 }
 
-/* POPUP IMAGE */
+/* FULL IMAGE */
 #popupImg{
-    max-width:95%;
-    max-height:90%;
-    border-radius:12px;
+max-width:95%;
+max-height:90%;
+border-radius:12px;
 }
 
 /* CANCEL BUTTON */
 #closePopup{
-    position:absolute;
-    top:30px;
-    right:40px;
-    font-size:45px;
-    color:white;
-    cursor:pointer;
+position:absolute;
+top:30px;
+right:40px;
+font-size:50px;
+color:white;
+cursor:pointer;
+font-weight:bold;
+}
+
+/* ABOUT */
+
+.about{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:60px;
+}
+
+.about p{
+color:#c5c6c7;
+line-height:1.7;
+}
+
+/* CONTACT */
+
+.contact{
+text-align:center;
+}
+
+.contact button{
+margin-top:30px;
+padding:15px 30px;
+border:none;
+border-radius:30px;
+background:#45a29e;
+color:white;
+font-weight:600;
+cursor:pointer;
+}
+
+/* FOOTER */
+
+footer{
+text-align:center;
+padding:40px;
+color:#aaa;
+}
+
+/* MOBILE */
+
+@media(max-width:900px){
+
+.hero h1{
+font-size:38px;
+}
+
+.about{
+grid-template-columns:1fr;
+}
+
 }
 
 </style>
@@ -275,131 +214,156 @@ footer{
 <body>
 
 <nav>
-  <div class="logo">SKY CREATIVES</div>
-  <div>
-    <a href="#portfolio">Portfolio</a>
-    <a href="#about">About</a>
-    <a href="#contact">Contact</a>
-  </div>
+<div class="logo">SKY CREATIVES</div>
+
+<div>
+<a href="#portfolio">Portfolio</a>
+<a href="#about">About</a>
+<a href="#contact">Contact</a>
+</div>
 </nav>
 
+<!-- HERO -->
+
 <section class="hero">
-  <h1>We Design Brands That People Remember.</h1>
-  <p>Helping businesses stand out through strategic, modern, and premium design experiences.</p>
-  <button class="cta" onclick="document.getElementById('portfolio').scrollIntoView()">View Portfolio</button>
+
+<h1>We Design Brands That People Remember.</h1>
+
+<p>
+Helping businesses stand out through modern,
+strategic, and premium design.
+</p>
+
+<button class="cta"
+onclick="document.getElementById('portfolio').scrollIntoView()">
+View Portfolio
+</button>
+
 </section>
+
+<!-- PORTFOLIO -->
 
 <section id="portfolio" class="section">
-  <h2 class="section-title reveal">Featured Work</h2>
-  <div class="grid">
-    <!-- REPLACE IMAGES WITH YOUR OWN -->
-    <div class="card reveal"><img src="pizza.png"></div>
-    <div class="card reveal"><img src="t3.jpg"></div>
-    <div class="card reveal"><img src="images/design3.jpg"></div>
-    <div class="card reveal"><img src="images/design4.jpg"></div>
-    <div class="card reveal"><img src="images/design5.jpg"></div>
-    <div class="card reveal"><img src="images/design6.jpg"></div>
-  </div>
+
+<h2 class="title">Featured Work</h2>
+
+<div class="grid">
+
+<!-- REPLACE THESE WITH YOUR IMAGES -->
+
+<div class="card">
+<img src="images/design1.jpg">
+</div>
+
+<div class="card">
+<img src="images/design2.jpg">
+</div>
+
+<div class="card">
+<img src="images/design3.jpg">
+</div>
+
+<div class="card">
+<img src="images/design4.jpg">
+</div>
+
+<div class="card">
+<img src="images/design5.jpg">
+</div>
+
+<div class="card">
+<img src="images/design6.jpg">
+</div>
+
+</div>
 </section>
+
+<!-- ABOUT -->
 
 <section id="about" class="section about">
-  <div class="reveal">
-    <h2>We Design With Purpose</h2>
-    <p>Sky Creatives is a modern design agency focused on building powerful brand identities and visual experiences.</p>
-  </div>
-  <div class="reveal">
-    ✔ Brand Identity<br><br>
-    ✔ Logo Design<br><br>
-    ✔ Marketing Graphics<br><br>
-    ✔ Web Visuals
-  </div>
-</section>
 
-<section id="contact" class="section contact reveal">
-  <h2 class="section-title">Let's Build Something Great</h2>
-  <p>Ready to elevate your brand? Get in touch today.</p>
-  <button class="contact-btn" onclick="window.open('mailto:youremail@example.com','_blank')">Contact Us</button>
-</section>
+<div>
+<h2>We Design With Purpose</h2>
 
-<footer>© 2026 Sky Creatives. All rights reserved.</footer>
-
-<!-- MODAL -->
-<div id="imageModal" class="modal">
-  <span class="close">&times;</span>
-  <img class="modal-content" id="modalImg">
+<p>
+Sky Creatives is a modern design agency focused on building powerful brand identities and visual experiences that drive real results.
+</p>
 </div>
 
-<script>
-// SCROLL REVEAL
-document.querySelectorAll('.reveal').forEach(el=>{
-  window.addEventListener('scroll',()=>{
-    if(el.getBoundingClientRect().top < window.innerHeight - 100){
-      el.classList.add('active');
-    }
-  });
-});
+<div>
+✔ Brand Identity<br><br>
+✔ Logo Design<br><br>
+✔ Marketing Graphics<br><br>
+✔ Web Visuals
+</div>
 
-// LIGHTBOX
-const modal = document.getElementById("imageModal");
-const modalImg = document.getElementById("modalImg");
-const closeBtn = document.querySelector(".close");
+</section>
 
-document.querySelectorAll(".card img").forEach(img=>{
-  img.addEventListener("click",()=>{
-    modal.style.display="flex";
-    modalImg.src=img.src;
-  });
-});
+<!-- CONTACT -->
 
-closeBtn.onclick=()=>modal.style.display="none";
-modal.onclick=e=>{ if(e.target===modal) modal.style.display="none"; }
-document.addEventListener("keydown",e=>{ if(e.key==="Escape") modal.style.display="none"; });
-</script>
+<section id="contact" class="section contact">
 
-  <!-- IMAGE POPUP -->
+<h2>Let's Build Something Great</h2>
+
+<p>Ready to elevate your brand?</p>
+
+<button onclick="window.open('mailto:youremail@example.com','_blank')">
+Contact Us
+</button>
+
+</section>
+
+<footer>
+© 2026 Sky Creatives. All rights reserved.
+</footer>
+
+<!-- 🔥 FULLSCREEN IMAGE POPUP -->
+
 <div id="imagePopup">
-    <span id="closePopup">&times;</span>
-    <img id="popupImg">
+<span id="closePopup">&times;</span>
+<img id="popupImg">
 </div>
+
 <script>
 
-// Get elements
+/* IMAGE POPUP SYSTEM */
+
 const popup = document.getElementById("imagePopup");
 const popupImg = document.getElementById("popupImg");
 const closePopup = document.getElementById("closePopup");
 
-// When ANY image is clicked
-document.querySelectorAll(".card img").forEach(image => {
+// CLICK IMAGE → OPEN
+document.querySelectorAll(".card img").forEach(image =>{
 
-    image.onclick = function(){
+image.onclick = function(){
 
-        popup.style.display = "flex";
-        popupImg.src = this.src;
+popup.style.display = "flex";
+popupImg.src = this.src;
 
-    };
+};
 
 });
 
-// Cancel button
+// CLICK X → CLOSE
 closePopup.onclick = function(){
-    popup.style.display = "none";
+popup.style.display = "none";
 };
 
-// Click outside image = close
+// CLICK OUTSIDE → CLOSE
 popup.onclick = function(e){
 
-    if(e.target !== popupImg){
-        popup.style.display = "none";
-    }
+if(e.target !== popupImg){
+popup.style.display = "none";
+}
 
 };
 
-// ESC key closes it
+// ESC KEY → CLOSE
 document.addEventListener("keydown", function(e){
 
-    if(e.key === "Escape"){
-        popup.style.display = "none";
-    }
+if(e.key === "Escape"){
+popup.style.display = "none";
+}
 
 });
 
@@ -407,5 +371,3 @@ document.addEventListener("keydown", function(e){
 
 </body>
 </html>
-
-
