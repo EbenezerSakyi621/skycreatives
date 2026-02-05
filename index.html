@@ -1,19 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<!-- PREMIUM FONT -->
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-
-<link rel="icon" href="favicon.png">
-
 <title>Sky Creatives</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
 <style>
 
+/* GLOBAL RESET */
 *{
 margin:0;
 padding:0;
@@ -28,38 +25,34 @@ overflow-x:hidden;
 }
 
 /* LOADER */
-#loader{
+
+.loader{
 position:fixed;
 inset:0;
 background:#020617;
 display:flex;
-justify-content:center;
 align-items:center;
+justify-content:center;
 z-index:99999;
 }
 
-.spinner{
-width:70px;
-height:70px;
-border:6px solid #0ea5e9;
-border-top:6px solid transparent;
-border-radius:50%;
-animation:spin 1s linear infinite;
-}
-
-@keyframes spin{
-to{transform:rotate(360deg);}
+.loader.hidden{
+opacity:0;
+pointer-events:none;
+transition:.6s;
 }
 
 /* NAVBAR */
+
 nav{
 position:fixed;
 width:100%;
-padding:20px 8%;
+top:0;
 display:flex;
 justify-content:space-between;
+padding:20px 8%;
+background:rgba(0,0,0,.4);
 backdrop-filter:blur(10px);
-background:rgba(2,6,23,.6);
 z-index:1000;
 }
 
@@ -67,21 +60,16 @@ nav a{
 color:white;
 text-decoration:none;
 margin-left:25px;
-transition:.3s;
 }
 
-nav a:hover{
-color:#38bdf8;
-text-shadow:0 0 12px #38bdf8;
-}
+/* HERO VIDEO */
 
-/* HERO WITH VIDEO */
 .hero{
-position:relative;
 height:100vh;
+position:relative;
 display:flex;
-justify-content:center;
 align-items:center;
+justify-content:center;
 text-align:center;
 overflow:hidden;
 }
@@ -94,198 +82,135 @@ object-fit:cover;
 z-index:-1;
 }
 
-.hero::after{
-content:'';
-position:absolute;
-inset:0;
-background:rgba(0,0,0,.6);
-}
-
-.hero-content{
-z-index:1;
-max-width:800px;
-}
-
 .hero h1{
 font-size:3.5rem;
-margin-bottom:10px;
-}
-
-.hero p{
-color:#cbd5e1;
 }
 
 .glow-btn{
 margin-top:20px;
-padding:15px 30px;
+padding:15px 35px;
 border:none;
 border-radius:12px;
 background:#0ea5e9;
+color:white;
 cursor:pointer;
-font-size:16px;
 transition:.4s;
-color:white;   /* ✅ THIS FIXES IT */
-font-weight:600;
 }
-
 
 .glow-btn:hover{
 box-shadow:0 0 25px #0ea5e9;
-transform:scale(1.05);
 }
 
 /* SECTIONS */
+
 section{
-padding:120px 8%;
+padding:110px 8%;
 }
 
 .section-title{
 text-align:center;
-font-size:2.3rem;
+font-size:2.5rem;
 margin-bottom:60px;
 }
 
 /* GRID */
+
 .grid{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
 gap:25px;
 }
 
-/* PORTFOLIO */
-.grid img{
+/* IMAGES */
+
+.card img{
 width:100%;
 height:260px;
 object-fit:cover;
-border-radius:14px;
+border-radius:16px;
 cursor:pointer;
 transition:.4s;
 }
 
-.grid img:hover{
-transform:translateY(-10px) scale(1.03);
-box-shadow:0 0 25px #0ea5e9;
+.card img:hover{
+transform:scale(1.05);
 }
 
-/* VIDEO CARD */
-.video-card{
-background:#020617;
-border-radius:16px;
-overflow:hidden;
-transition:.4s;
-border:1px solid rgba(255,255,255,.05);
-}
+/* ANIMATED VIDEOS */
 
-.video-card:hover{
-transform:translateY(-12px);
-box-shadow:0 0 30px rgba(14,165,233,.6);
-}
-
-.video-card img{
+.card video{
 width:100%;
+height:260px;
+object-fit:cover;
+border-radius:16px;
+cursor:pointer;
 }
 
-.video-content{
-padding:18px;
-}
+/* POPUP */
 
-.watch{
-display:inline-block;
-margin-top:10px;
-padding:10px 18px;
-background:#ef4444;
-border-radius:8px;
-color:white;
-text-decoration:none;
-transition:.3s;
-}
-
-.watch:hover{
-box-shadow:0 0 20px red;
-}
-
-/* IMAGE MODAL */
-.modal{
+.popup{
 position:fixed;
 inset:0;
-background:rgba(0,0,0,.95);
+background:rgba(0,0,0,.96);
 display:none;
-justify-content:center;
 align-items:center;
+justify-content:center;
 z-index:9999;
 }
 
-.modal img{
+.popup.active{
+display:flex;
+}
+
+.popup img,
+.popup video{
 max-width:90%;
 max-height:90%;
-border-radius:12px;
+border-radius:14px;
 }
 
 .close{
 position:absolute;
-top:40px;
-right:60px;
-font-size:35px;
+top:30px;
+right:40px;
+font-size:32px;
 cursor:pointer;
 }
 
-/* SCROLL ANIMATION */
-.reveal{
-opacity:0;
-transform:translateY(60px);
-transition:1s;
+/* YOUTUBE */
+
+.video-card img{
+width:100%;
+border-radius:16px;
 }
 
-.reveal.active{
-opacity:1;
-transform:translateY(0);
-}
+/* CONTACT */
 
-/* POPUP */
-.popup{
-position:fixed;
-inset:0;
-background:rgba(0,0,0,.85);
-display:flex;
-justify-content:center;
-align-items:center;
-z-index:10000;
-}
-
-.popup-box{
-background:white;
-color:black;
-padding:45px;
-border-radius:18px;
+.contact{
 text-align:center;
-width:90%;
-max-width:420px;
+background:#020617;
+border-radius:20px;
+padding:60px;
 }
 
-.subscribe{
-background:red;
+.contact button{
+padding:16px 40px;
+border:none;
+border-radius:12px;
+background:#22c55e;
 color:white;
-padding:12px 22px;
-border:none;
-border-radius:8px;
 cursor:pointer;
 }
 
-.cancel{
-margin-top:10px;
-padding:10px 18px;
-border:none;
-cursor:pointer;
-}
+/* WHATSAPP */
 
-/* FLOATING WHATSAPP */
-.whatsapp-float{
+.whatsapp{
 position:fixed;
 bottom:25px;
 right:25px;
-width:60px;
-height:60px;
 background:#25D366;
+width:65px;
+height:65px;
 border-radius:50%;
 display:flex;
 align-items:center;
@@ -293,254 +218,18 @@ justify-content:center;
 font-size:30px;
 color:white;
 text-decoration:none;
-z-index:99999;
-box-shadow:0 0 20px rgba(37,211,102,.8);
-animation:pulse 2s infinite;
 }
 
-.whatsapp-float:hover{
-transform:scale(1.1);
-}
+/* MOBILE */
 
-@keyframes pulse{
-0%{box-shadow:0 0 0 0 rgba(37,211,102,.6);}
-70%{box-shadow:0 0 0 15px rgba(37,211,102,0);}
-100%{box-shadow:0 0 0 0 rgba(37,211,102,0);}
-}
-/* Animated Popup Background */
-
-.animated-popup{
-position:fixed;
-inset:0;
-background:rgba(0,0,0,.97);
-display:none;
-align-items:center;
-justify-content:center;
-z-index:10000;
-}
-
-/* Show popup */
-.animated-popup.active{
-display:flex;
-}
-
-/* Image */
-
-.animated-popup img{
-max-width:92%;
-max-height:92%;
-border-radius:16px;
-animation:animatedZoom .35s ease;
-}
-
-/* Close button */
-
-.animated-close{
-position:absolute;
-top:30px;
-right:40px;
-font-size:34px;
-color:white;
-cursor:pointer;
-transition:.3s;
-}
-
-.animated-close:hover{
-transform:scale(1.2);
-}
-
-/* Smooth zoom */
-
-@keyframes animatedZoom{
-from{
-transform:scale(.75);
-opacity:0;
-}
-to{
-transform:scale(1);
-opacity:1;
-}
-}
-
-footer{
-padding:40px;
-text-align:center;
-color:#94a3b8;
-}
-
-
-  .contact-box{
-max-width:700px;
-margin:auto;
-text-align:center;
-background:#020617;
-padding:60px 30px;
-border-radius:18px;
-border:1px solid rgba(255,255,255,.05);
-}
-
-.contact-box p{
-color:#cbd5e1;
-margin:15px 0 25px;
-}
-
-.contact-btn{
-padding:16px 34px;
-font-size:18px;
-border:none;
-border-radius:12px;
-background:#22c55e;
-color:white;
-cursor:pointer;
-transition:.4s;
-}
-
-.contact-btn:hover{
-transform:scale(1.05);
-box-shadow:0 0 25px #22c55e;
-}
-
-
-  @media (min-width:1600px){
-
-.hero h1{
-font-size:4.5rem;
-}
-
-section{
-padding:140px 12%;
-}
-
-}
-
-
-  @media (max-width:1200px){
-
-.hero h1{
-font-size:3rem;
-}
-
-}
-@media (max-width:900px){
-
-nav{
-padding:18px 5%;
-}
-
-.hero h1{
-font-size:2.5rem;
-}
-
-section{
-padding:90px 5%;
-}
-
-}
-@media (max-width:600px){
+@media(max-width:600px){
 
 .hero h1{
 font-size:2rem;
-line-height:1.2;
 }
 
-.hero p{
-font-size:14px;
-}
-
-.glow-btn{
-padding:12px 22px;
-font-size:14px;
-}
-
-.section-title{
-font-size:1.8rem;
-}
-
-nav h2{
-font-size:18px;
-}
-
-nav a{
-margin-left:12px;
-font-size:14px;
-}
-
-/* smaller images */
-.grid img{
-height:200px;
-}
-
-/* popup fits screen */
-.popup-box{
-padding:30px 20px;
-}
-
-.whatsapp-float{
-width:55px;
-height:55px;
-font-size:26px;
-}
-
-}
-@media (max-width:380px){
-
-.hero h1{
-font-size:1.6rem;
-}
-
-.hero p{
-font-size:13px;
-}
-
-.glow-btn{
-font-size:13px;
-padding:10px 18px;
-}
-
-}
-
-
-  /* ANIMATED GRID */
-
-.animated-grid{
-display:grid;
-grid-template-columns:repeat(auto-fit, minmax(280px,1fr));
-gap:30px;
-margin-top:40px;
-}
-
-/* CARD */
-
-.animated-card{
-border-radius:18px;
-overflow:hidden;
-position:relative;
-}
-
-/* IMAGE */
-
-.animated-card img{
-width:100%;
-height:320px;        /* prevents giant stretching */
-object-fit:cover;    /* keeps it professional */
-display:block;
-transition:.5s;
-cursor:pointer;
-}
-
-/* HOVER EFFECT */
-
-.animated-card:hover img{
-transform:scale(1.08);
-}
-
-  .animated-card:hover{
-box-shadow:0 0 35px rgba(14,165,233,.35);
-}
-@media(max-width:600px){
-
-.animated-card img{
-height:240px;
+section{
+padding:80px 5%;
 }
 
 }
@@ -551,261 +240,171 @@ height:240px;
 <body>
 
 <!-- LOADER -->
-<div id="loader">
-<div class="spinner"></div>
+<div class="loader" id="loader">
+<h2>Loading...</h2>
 </div>
 
 <!-- NAV -->
 <nav>
 <h2>Sky Creatives</h2>
-
 <div>
-<a href="#portfolio">Portfolio</a>
-<a href="#videos">Videos</a>
+<a href="#">Home</a>
+<a href="#">Work</a>
+<a href="#">Videos</a>
+<a href="#">Contact</a>
 </div>
 </nav>
 
 <!-- HERO -->
 <div class="hero">
 
-<video autoplay muted loop>
-<source src="hero-video.mp4" type="video/mp4">
+<video autoplay muted loop playsinline>
+<source src="YOUR_VIDEO.mp4" type="video/mp4">
 </video>
 
-<div class="hero-content">
-<h1>We Create Cinematic Visual Experiences</h1>
-<p>Premium design, branding, and 3D animation studio.</p>
-
-<button class="glow-btn"
-onclick="document.getElementById('portfolio').scrollIntoView({behavior:'smooth'})">
-View Work
-</button>
+<div>
+<h1>We Create Stunning Visual Experiences</h1>
+<button class="glow-btn">View Work</button>
 </div>
 
 </div>
 
 <!-- PORTFOLIO -->
-<section id="portfolio" class="reveal">
-<h2 class="section-title">Our Designs</h2>
+<section>
 
-<div class="grid">
-<img src="design1.jpg" onclick="openModal(this.src)">
-<img src="design2.jpg" onclick="openModal(this.src)">
-<img src="design3.jpg" onclick="openModal(this.src)">
-<img src="design4.jpg" onclick="openModal(this.src)">
-<img src="design5.jpg" onclick="openModal(this.src)">
-<img src="design6.jpg" onclick="openModal(this.src)">
-<img src="logo.png" onclick="openModal(this.src)">
-<img src="design8.jpg" onclick="openModal(this.src)">
-<img src="design9.jpg" onclick="openModal(this.src)">
-<img src="design10.jpg" onclick="openModal(this.src)">
-<img src="design11.jpg" onclick="openModal(this.src)">
+<h2 class="section-title">Portfolio</h2>
 
-</div>
-</section>
-
-<!-- ANIMATED WORKS -->
-<section id="animated">
-
-<h2 class="section-title">Animated Images</h2>
-
-<div class="animated-grid">
-
-<!-- Animation 1 -->
-<div class="animated-card">
-<img src="momdad.png" onclick="openAnimatedPopup(this.src)">
-</div>
-
-<!-- Animation 2 -->
-<div class="animated-card">
-<img src="ani.png" onclick="openAnimatedPopup(this.src)">
-</div>
-
-<!-- Animation 3 -->
-<div class="animated-card">
-<img src="ani1.png" onclick="openAnimatedPopup(this.src)">
-</div>
-
-</div>
+<div id="gallery" class="grid"></div>
 
 </section>
 
+<!-- ANIMATED -->
+<section>
 
-<!-- VIDEOS -->
-<section id="videos" class="reveal">
-<h2 class="section-title">Latest Animations</h2>
+<h2 class="section-title">Animations</h2>
 
 <div class="grid">
 
-<div class="video-card">
-<img src="https://img.youtube.com/vi/xyWfuewv3wI/maxresdefault.jpg">
-<div class="video-content">
-<h3>CHRONO LINK: THE FUTURE OF HUMANITY</h3>
-<a class="watch" target="_blank"
-href="https://youtu.be/xyWfuewv3wI">Watch</a>
-</div>
+<div class="card">
+<video onclick="openPopup(this.src)" autoplay muted loop playsinline>
+<source src="animation1.mp4">
+</video>
 </div>
 
-<div class="video-card">
-<img src="https://img.youtube.com/vi/S49paqxE6T0/maxresdefault.jpg">
-<div class="video-content">
-<h3>Chrono Link: Seconds Before Tomorrow </h3>
-<a class="watch" target="_blank"
-href="https://youtu.be/S49paqxE6T0">Watch</a>
-</div>
-</div>
-
-<div class="video-card">
-<img src="https://img.youtube.com/vi/9pD5hQNStpo/hqdefault.jpg">
-<div class="video-content">
-<h3>Love under the baobab tree</h3>
-<a class="watch" target="_blank"
-href="https://youtu.be/9pD5hQNStpo">Watch</a>
-</div>
+<div class="card">
+<video onclick="openPopup(this.src)" autoplay muted loop playsinline>
+<source src="animation2.mp4">
+</video>
 </div>
 
 </div>
+
 </section>
 
-<!-- IMAGE MODAL -->
-<div class="modal" id="modal">
-<span class="close" onclick="closeModal()">✕</span>
-<img id="modalImg">
+<!-- YOUTUBE -->
+<section>
+
+<h2 class="section-title">Latest Videos</h2>
+
+<div class="grid">
+
+<a href="https://youtu.be/xyWfuewv3wI" target="_blank" class="video-card">
+<img loading="lazy"
+src="https://img.youtube.com/vi/xyWfuewv3wI/hqdefault.jpg">
+</a>
+
+<a href="https://youtu.be/S49paqxE6T0" target="_blank" class="video-card">
+<img loading="lazy"
+src="https://img.youtube.com/vi/S49paqxE6T0/hqdefault.jpg">
+</a>
+
 </div>
+
+</section>
+
+<!-- CONTACT -->
+<section>
+
+<div class="contact">
+<h2>Let's Work Together</h2>
+<br>
+<a href="https://wa.me/YOUR_WHATSAPP_NUMBER">
+<button>Contact Us</button>
+</a>
+</div>
+
+</section>
 
 <!-- POPUP -->
-<div class="popup" id="popup">
-<div class="popup-box">
-<h2>Subscribe to Sky Creatives 🎬</h2>
-<p>Join our YouTube for premium animations.</p>
-
-<a target="_blank"
-href="https://www.youtube.com/@skycreativesstudios">
-<button class="subscribe">Subscribe</button>
-</a>
-
-<br>
-<button class="cancel" onclick="closePopup()">Maybe Later</button>
-</div>
+<div class="popup" id="popup" onclick="closePopup()">
+<span class="close">✕</span>
+<img id="popupImg">
+<video id="popupVideo" controls></video>
 </div>
 
-<!-- WHATSAPP BUTTON -->
-<a href="https://wa.me/233534023396" 
-class="whatsapp-float" 
-target="_blank">
-💬
+<!-- WHATSAPP -->
+<a href="https://wa.me/YOUR_WHATSAPP_NUMBER" class="whatsapp">
+✓
 </a>
-
-  <!-- CONTACT SECTION -->
-<section id="contact" class="reveal">
-
-<h2 class="section-title">Contact Us</h2>
-
-<div class="contact-box">
-
-<h3>Let’s Build Something Amazing Together 🚀</h3>
-
-<p>
-Have a project in mind?  
-Reach out and let’s create premium visuals for your brand.
-</p>
-
-<a href="https://wa.me/233534023396" target="_blank">
-<button class="contact-btn">
-Message Us on WhatsApp
-</button>
-</a>
-
-</div>
-
-</section>
-
-<footer>
-© 2026 Sky Creatives
-</footer>
 
 <script>
 
 /* LOADER */
 window.addEventListener("load",()=>{
-document.getElementById("loader").style.display="none";
+document.getElementById("loader").classList.add("hidden");
 });
-
-/* IMAGE MODAL */
-function openModal(src){
-modal.style.display="flex";
-modalImg.src=src;
-}
-
-function closeModal(){
-modal.style.display="none";
-}
 
 /* POPUP */
-setTimeout(()=>{
-popup.style.display="flex";
-},1500);
-
-function closePopup(){
-popup.style.display="none";
-}
-
-/* SCROLL REVEAL */
-const reveals=document.querySelectorAll(".reveal");
-
-window.addEventListener("scroll",()=>{
-reveals.forEach(el=>{
-const top=el.getBoundingClientRect().top;
-if(top<window.innerHeight-100){
-el.classList.add("active");
-}
-});
-});
-
-  <script>
 
 function openPopup(src){
-document.getElementById("popupImg").src = src;
-document.getElementById("imgPopup").classList.add("active");
+
+const popup=document.getElementById("popup");
+const img=document.getElementById("popupImg");
+const vid=document.getElementById("popupVideo");
+
+popup.classList.add("active");
+
+if(src.includes(".mp4")){
+vid.src=src;
+vid.style.display="block";
+img.style.display="none";
+}else{
+img.src=src;
+img.style.display="block";
+vid.style.display="none";
+}
+
 }
 
 function closePopup(){
-document.getElementById("imgPopup").classList.remove("active");
+document.getElementById("popup").classList.remove("active");
 }
 
-</script>
-<script>
+/* CLOUDINARY AUTO GALLERY */
 
-function openAnimatedPopup(src){
-document.getElementById("animatedPopupImg").src = src;
-document.getElementById("animatedPopup").classList.add("active");
-}
+const cloud="YOUR_CLOUD_NAME";
 
-function closeAnimatedPopup(){
-document.getElementById("animatedPopup").classList.remove("active");
-}
+fetch(`https://res.cloudinary.com/${cloud}/image/list/portfolio.json`)
+.then(res=>res.json())
+.then(data=>{
 
-</script>
+const gallery=document.getElementById("gallery");
 
-</script>
-<!-- ANIMATED IMAGE POPUP -->
-<div id="animatedPopup" class="animated-popup">
+data.resources.forEach(img=>{
 
-    <span class="animated-close" onclick="closeAnimatedPopup()">✕</span>
+const url=`https://res.cloudinary.com/${cloud}/image/upload/q_auto,f_auto,w_800/${img.public_id}.jpg`;
 
-    <img id="animatedPopupImg">
-
+gallery.innerHTML+=`
+<div class="card">
+<img loading="lazy" src="${url}" onclick="openPopup('${url}')">
 </div>
+`;
+
+});
+
+});
+
+</script>
 
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
