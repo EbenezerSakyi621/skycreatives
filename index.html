@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Sky Creatives | Premium Design Agency</title>
+<title>Sky Creatives | Premium Agency</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;800&display=swap" rel="stylesheet">
 
@@ -14,12 +14,13 @@
 margin:0;
 padding:0;
 box-sizing:border-box;
-font-family:'Inter', sans-serif;
+font-family:'Inter',sans-serif;
 }
 
 body{
 background:#0b0c10;
 color:white;
+scroll-behavior:smooth;
 }
 
 /* NAVBAR */
@@ -33,10 +34,10 @@ align-items:center;
 padding:20px 8%;
 background:rgba(0,0,0,.6);
 backdrop-filter:blur(10px);
+z-index:1000;
 }
 
 .logo{
-font-size:22px;
 font-weight:800;
 letter-spacing:2px;
 }
@@ -45,6 +46,8 @@ nav a{
 color:white;
 text-decoration:none;
 margin-left:30px;
+font-weight:500;
+transition:.3s;
 }
 
 nav a:hover{
@@ -64,7 +67,7 @@ padding:20px;
 }
 
 .hero h1{
-font-size:60px;
+font-size:58px;
 max-width:850px;
 }
 
@@ -77,7 +80,7 @@ max-width:600px;
 
 .cta{
 margin-top:40px;
-padding:15px 30px;
+padding:16px 32px;
 border:none;
 border-radius:30px;
 background:#66fcf1;
@@ -86,7 +89,7 @@ font-weight:700;
 cursor:pointer;
 }
 
-/* SECTIONS */
+/* SECTION */
 
 .section{
 padding:100px 8%;
@@ -94,17 +97,19 @@ padding:100px 8%;
 
 .title{
 text-align:center;
-font-size:40px;
+font-size:42px;
 margin-bottom:60px;
 }
 
-/* PORTFOLIO GRID */
+/* GRID */
 
 .grid{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
 gap:25px;
 }
+
+/* PORTFOLIO */
 
 .card{
 overflow:hidden;
@@ -123,7 +128,7 @@ transition:.4s;
 transform:scale(1.08);
 }
 
-/* POPUP (THIS IS THE FULLSCREEN IMAGE SYSTEM) */
+/* IMAGE POPUP */
 
 #imagePopup{
 display:none;
@@ -135,25 +140,61 @@ height:100%;
 background:rgba(0,0,0,.95);
 justify-content:center;
 align-items:center;
-z-index:9999;
+z-index:2000;
 }
 
-/* FULL IMAGE */
 #popupImg{
 max-width:95%;
 max-height:90%;
 border-radius:12px;
 }
 
-/* CANCEL BUTTON */
 #closePopup{
 position:absolute;
 top:30px;
 right:40px;
 font-size:50px;
-color:white;
 cursor:pointer;
-font-weight:bold;
+}
+
+/* VIDEO CARDS */
+
+.video-card{
+position:relative;
+border-radius:18px;
+overflow:hidden;
+background:#111;
+}
+
+.video-thumb{
+width:100%;
+height:260px;
+object-fit:cover;
+display:block;
+}
+
+.video-iframe{
+position:absolute;
+top:0;
+left:0;
+width:100%;
+height:100%;
+border:none;
+display:none;
+}
+
+.watch-btn{
+position:absolute;
+bottom:15px;
+left:50%;
+transform:translateX(-50%);
+padding:12px 24px;
+border:none;
+border-radius:30px;
+background:red;
+color:white;
+font-weight:700;
+cursor:pointer;
 }
 
 /* ABOUT */
@@ -213,11 +254,14 @@ grid-template-columns:1fr;
 
 <body>
 
+<!-- NAVBAR -->
+
 <nav>
 <div class="logo">SKY CREATIVES</div>
 
 <div>
 <a href="#portfolio">Portfolio</a>
+<a href="#videos">Videos</a>
 <a href="#about">About</a>
 <a href="#contact">Contact</a>
 </div>
@@ -227,16 +271,13 @@ grid-template-columns:1fr;
 
 <section class="hero">
 
-<h1>We Design Brands That People Remember.</h1>
+<h1>We Design Brands & Create Stunning Visual Experiences.</h1>
 
-<p>
-Helping businesses stand out through modern,
-strategic, and premium design.
-</p>
+<p>Premium branding, design, and 3D animation that makes businesses unforgettable.</p>
 
 <button class="cta"
 onclick="document.getElementById('portfolio').scrollIntoView()">
-View Portfolio
+View Work
 </button>
 
 </section>
@@ -245,42 +286,59 @@ View Portfolio
 
 <section id="portfolio" class="section">
 
-<h2 class="title">Featured Work</h2>
+<h2 class="title">Featured Designs</h2>
 
 <div class="grid">
 
-<!-- REPLACE THESE WITH YOUR IMAGES -->
+<div class="card"><img src="images/design1.jpg"></div>
+<div class="card"><img src="images/design2.jpg"></div>
+<div class="card"><img src="images/design3.jpg"></div>
+<div class="card"><img src="images/design4.jpg"></div>
 
-<div class="card">
-<img src="images/design1.jpg">
+</div>
+</section>
+
+<!-- VIDEO SECTION -->
+
+<section id="videos" class="section">
+
+<h2 class="title">3D Animation Videos</h2>
+
+<div class="grid">
+
+<!-- VIDEO 1 -->
+<div class="video-card"
+data-id="VIDEO_ID">
+
+<img class="video-thumb"
+src="https://img.youtube.com/vi/VIDEO_ID/maxresdefault.jpg">
+
+<iframe class="video-iframe"
+allow="autoplay; encrypted-media"></iframe>
+
+<button class="watch-btn"
+onclick="window.open('https://youtube.com/watch?v=VIDEO_ID','_blank')">
+▶ Watch
+</button>
+
 </div>
 
-<div class="card">
-<img src="images/design2.jpg">
-</div>
 
-<div class="card">
-<img src="images/design3.jpg">
-</div>
+<!-- VIDEO 2 -->
+<div class="video-card"
+data-id="VIDEO_ID">
 
-<div class="card">
-<img src="images/design4.jpg">
-</div>
+<img class="video-thumb"
+src="https://img.youtube.com/vi/VIDEO_ID/maxresdefault.jpg">
 
-<div class="card">
-<img src="images/design5.jpg">
-</div>
+<iframe class="video-iframe"
+allow="autoplay; encrypted-media"></iframe>
 
-<div class="card">
-<img src="images/design6.jpg">
-</div>
+<button class="watch-btn"
+onclick="window.open('https://youtube.com/watch?v=VIDEO_ID','_blank')">
+▶ Watch
+</button>
 
-  <div class="card">
-<img src="images/design7.jpg">
-</div>
-
-  <div class="card">
-<img src="images/design8.jpg">
 </div>
 
 </div>
@@ -292,9 +350,9 @@ View Portfolio
 
 <div>
 <h2>We Design With Purpose</h2>
-
 <p>
-Sky Creatives is a modern design agency focused on building powerful brand identities and visual experiences that drive real results.
+Sky Creatives builds modern brands, graphics,
+and cinematic 3D animations that capture attention instantly.
 </p>
 </div>
 
@@ -302,7 +360,7 @@ Sky Creatives is a modern design agency focused on building powerful brand ident
 ✔ Brand Identity<br><br>
 ✔ Logo Design<br><br>
 ✔ Marketing Graphics<br><br>
-✔ Web Visuals
+✔ 3D Animation
 </div>
 
 </section>
@@ -311,21 +369,20 @@ Sky Creatives is a modern design agency focused on building powerful brand ident
 
 <section id="contact" class="section contact">
 
-<h2>Let's Build Something Great</h2>
-
+<h2>Let's Work Together</h2>
 <p>Ready to elevate your brand?</p>
 
-<button onclick="window.open('skycreatives_premium_redesign.html','_blank')">
+<button onclick="window.open('mailto:youremail@example.com','_blank')">
 Contact Us
 </button>
 
 </section>
 
 <footer>
-© 2026 Sky Creatives. All rights reserved.
+© 2026 Sky Creatives
 </footer>
 
-<!-- 🔥 FULLSCREEN IMAGE POPUP -->
+<!-- IMAGE POPUP -->
 
 <div id="imagePopup">
 <span id="closePopup">&times;</span>
@@ -334,44 +391,53 @@ Contact Us
 
 <script>
 
-/* IMAGE POPUP SYSTEM */
+/* IMAGE POPUP */
 
 const popup = document.getElementById("imagePopup");
 const popupImg = document.getElementById("popupImg");
-const closePopup = document.getElementById("closePopup");
 
-// CLICK IMAGE → OPEN
-document.querySelectorAll(".card img").forEach(image =>{
+document.querySelectorAll(".card img").forEach(img=>{
 
-image.onclick = function(){
-
-popup.style.display = "flex";
-popupImg.src = this.src;
-
+img.onclick=()=>{
+popup.style.display="flex";
+popupImg.src=img.src;
 };
 
 });
 
-// CLICK X → CLOSE
-closePopup.onclick = function(){
-popup.style.display = "none";
+document.getElementById("closePopup").onclick=()=>{
+popup.style.display="none";
 };
 
-// CLICK OUTSIDE → CLOSE
-popup.onclick = function(e){
-
-if(e.target !== popupImg){
-popup.style.display = "none";
+popup.onclick=(e)=>{
+if(e.target!==popupImg){
+popup.style.display="none";
 }
-
 };
 
-// ESC KEY → CLOSE
-document.addEventListener("keydown", function(e){
+/* VIDEO HOVER PREVIEW */
 
-if(e.key === "Escape"){
-popup.style.display = "none";
-}
+document.querySelectorAll(".video-card").forEach(card=>{
+
+const iframe = card.querySelector(".video-iframe");
+const thumb = card.querySelector(".video-thumb");
+const id = card.dataset.id;
+
+card.addEventListener("mouseenter",()=>{
+
+iframe.src=`https://www.youtube.com/embed/${id}?autoplay=1&mute=1&controls=0&loop=1&playlist=${id}`;
+iframe.style.display="block";
+thumb.style.display="none";
+
+});
+
+card.addEventListener("mouseleave",()=>{
+
+iframe.src="";
+iframe.style.display="none";
+thumb.style.display="block";
+
+});
 
 });
 
@@ -379,4 +445,3 @@ popup.style.display = "none";
 
 </body>
 </html>
-
