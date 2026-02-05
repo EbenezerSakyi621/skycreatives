@@ -717,6 +717,32 @@ function closePopup(){
 </script>
 
 
+
+  <script>
+document.addEventListener("DOMContentLoaded", function(){
+
+    const popup = document.getElementById("youtubePopup");
+    const closeBtn = document.getElementById("closePopup");
+    const cancelBtn = document.getElementById("cancelPopup");
+
+    // Show popup after page loads
+    setTimeout(() => {
+        popup.classList.remove("hidden");
+    }, 800);
+
+    // Close popup (X button)
+    closeBtn.addEventListener("click", () => {
+        popup.classList.add("hidden");
+    });
+
+    // Close popup (Maybe later)
+    cancelBtn.addEventListener("click", () => {
+        popup.classList.add("hidden");
+    });
+
+});
+</script>
+
   <!-- YouTube Subscribe Popup -->
 <div id="youtubePopup" class="popup-overlay">
     
@@ -761,8 +787,31 @@ function closePopup(){
 
 </div>
 
+
+  <!-- Fullscreen YouTube Subscribe Popup -->
+<div id="youtubePopup" class="popup-overlay hidden">
+
+  <div class="popup-box">
+    <span class="close-btn" id="closePopup">✕</span>
+
+    <h2>Subscribe to Sky Creatives 🎬</h2>
+    <p>
+      Get premium 3D animations, creative designs,
+      and behind-the-scenes content on our YouTube channel.
+    </p>
+
+    <a href="https://www.youtube.com/@skycreativesstudios" target="_blank">
+      <button class="subscribe-btn">Subscribe on YouTube</button>
+    </a>
+
+    <button class="cancel-btn" id="cancelPopup">Maybe Later</button>
+  </div>
+
+</div>
+
 </body>
 </html>
+
 
 
 
