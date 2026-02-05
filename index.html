@@ -249,6 +249,42 @@ grid-template-columns:1fr;
 
 }
 
+
+  .youtube-subscribe{
+margin-top:80px;
+text-align:center;
+background:linear-gradient(135deg,#111,#1c1c1c);
+padding:60px 30px;
+border-radius:20px;
+}
+
+.youtube-subscribe h3{
+font-size:28px;
+margin-bottom:10px;
+}
+
+.youtube-subscribe p{
+color:#c5c6c7;
+margin-bottom:25px;
+}
+
+.youtube-subscribe button{
+padding:16px 34px;
+border:none;
+border-radius:40px;
+background:#ff0000;
+color:white;
+font-size:18px;
+font-weight:700;
+cursor:pointer;
+transition:.3s;
+}
+
+.youtube-subscribe button:hover{
+transform:scale(1.05);
+box-shadow:0 10px 30px rgba(255,0,0,.4);
+}
+
 </style>
 </head>
 
@@ -328,20 +364,48 @@ View Work
 </div>
 
 
+<div class="video-card" data-id="S49paqxE6T0">
 
-<!-- VIDEO 2 -->
-<div class="video-card"
-data-id="VIDEO_ID">
+  <img class="video-thumb"
+  src="https://img.youtube.com/vi/S49paqxE6T0/maxresdefault.jpg"
+  alt="3D Animation Video">
 
-<img class="video-thumb"
-src="https://img.youtube.com/vi/VIDEO_ID/maxresdefault.jpg">
+  <iframe class="video-iframe"
+  allow="autoplay; encrypted-media"></iframe>
 
-<iframe class="video-iframe"
-allow="autoplay; encrypted-media"></iframe>
+  <button class="watch-btn"
+  onclick="window.open('https://www.youtube.com/watch?v=S49paqxE6T0','_blank')">
+  ▶ Watch
+  </button>
 
-<button class="watch-btn"
-onclick="window.open('https://youtube.com/watch?v=VIDEO_ID','_blank')">
-▶ Watch
+</div>
+
+  <div class="video-card" data-id="9pD5hQNStpo">
+
+  <img class="video-thumb"
+  src="https://img.youtube.com/vi/9pD5hQNStpo/maxresdefault.jpg"
+  alt="3D Animation Video">
+
+  <iframe class="video-iframe"
+  allow="autoplay; encrypted-media"></iframe>
+
+  <button class="watch-btn"
+  onclick="window.open('https://www.youtube.com/watch?v=9pD5hQNStpo','_blank')">
+  ▶ Watch
+  </button>
+
+</div>
+
+
+<div class="youtube-subscribe">
+
+<h3>Enjoy Our 3D Animations?</h3>
+
+<p>Subscribe to our YouTube channel to see more cinematic animations and creative visuals.</p>
+
+<button onclick="window.open('https://www.youtube.com/@YourChannelName?sub_confirmation=1
+','_blank')">
+🔴 Subscribe on YouTube
 </button>
 
 </div>
@@ -450,5 +514,6 @@ thumb.style.display="block";
 
 </body>
 </html>
+
 
 
