@@ -307,6 +307,60 @@ transform:scale(1.1);
 70%{box-shadow:0 0 0 15px rgba(37,211,102,0);}
 100%{box-shadow:0 0 0 0 rgba(37,211,102,0);}
 }
+/* Animated Popup Background */
+
+.animated-popup{
+position:fixed;
+inset:0;
+background:rgba(0,0,0,.97);
+display:none;
+align-items:center;
+justify-content:center;
+z-index:10000;
+}
+
+/* Show popup */
+.animated-popup.active{
+display:flex;
+}
+
+/* Image */
+
+.animated-popup img{
+max-width:92%;
+max-height:92%;
+border-radius:16px;
+animation:animatedZoom .35s ease;
+}
+
+/* Close button */
+
+.animated-close{
+position:absolute;
+top:30px;
+right:40px;
+font-size:34px;
+color:white;
+cursor:pointer;
+transition:.3s;
+}
+
+.animated-close:hover{
+transform:scale(1.2);
+}
+
+/* Smooth zoom */
+
+@keyframes animatedZoom{
+from{
+transform:scale(.75);
+opacity:0;
+}
+to{
+transform:scale(1);
+opacity:1;
+}
+}
 
 footer{
 padding:40px;
@@ -546,7 +600,7 @@ View Work
 <img src="design9.jpg" onclick="openModal(this.src)">
 <img src="design10.jpg" onclick="openModal(this.src)">
 <img src="design11.jpg" onclick="openModal(this.src)">
-<img src="momdad.png" onclick="openModal(this.src)">
+
 </div>
 </section>
 
@@ -559,17 +613,17 @@ View Work
 
 <!-- Animation 1 -->
 <div class="animated-card">
-<img src="momdad.png">
+<img src="momdad.png" onclick="openAnimatedPopup(this.src)">
 </div>
 
 <!-- Animation 2 -->
 <div class="animated-card">
-<img src="ani.png">
+<img src="ani.png" onclick="openAnimatedPopup(this.src)">
 </div>
 
 <!-- Animation 3 -->
 <div class="animated-card">
-<img src="ani1.png">
+<img src="ani1.png" onclick="openAnimatedPopup(this.src)">
 </div>
 
 </div>
@@ -708,10 +762,44 @@ el.classList.add("active");
 });
 });
 
+  <script>
+
+function openPopup(src){
+document.getElementById("popupImg").src = src;
+document.getElementById("imgPopup").classList.add("active");
+}
+
+function closePopup(){
+document.getElementById("imgPopup").classList.remove("active");
+}
+
 </script>
+<script>
+
+function openAnimatedPopup(src){
+document.getElementById("animatedPopupImg").src = src;
+document.getElementById("animatedPopup").classList.add("active");
+}
+
+function closeAnimatedPopup(){
+document.getElementById("animatedPopup").classList.remove("active");
+}
+
+</script>
+
+</script>
+<!-- ANIMATED IMAGE POPUP -->
+<div id="animatedPopup" class="animated-popup">
+
+    <span class="animated-close" onclick="closeAnimatedPopup()">✕</span>
+
+    <img id="animatedPopupImg">
+
+</div>
 
 </body>
 </html>
+
 
 
 
