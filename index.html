@@ -1,15 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<!-- PREMIUM FONT -->
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<!-- SEO -->
+<meta name="description" content="Sky Creatives is a premium design and animation studio creating cinematic visuals, branding, and 3D animations for modern businesses.">
+<meta name="keywords" content="animation studio Ghana, design agency Ghana, 3D animation, branding studio, creative agency, motion graphics">
+<meta name="author" content="Sky Creatives">
 
-<link rel="icon" href="favicon.png">
+<link rel="icon" type="image/png" href="/favicon.png">
 
+<!-- ⚡ ULTRA FAST FONT -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 
 <title>Sky Creatives</title>
 
@@ -22,190 +27,121 @@ box-sizing:border-box;
 font-family:'Poppins',sans-serif;
 }
 
+html{scroll-behavior:smooth;}
+
 body{
 background:#020617;
 color:white;
 overflow-x:hidden;
 }
 
-/* LOADER */
-#loader{
-position:fixed;
-inset:0;
-background:#020617;
-display:flex;
-justify-content:center;
-align-items:center;
-z-index:99999;
-}
-
-.spinner{
-width:70px;
-height:70px;
-border:6px solid #0ea5e9;
-border-top:6px solid transparent;
-border-radius:50%;
-animation:spin 1s linear infinite;
-}
-
-@keyframes spin{
-to{transform:rotate(360deg);}
-}
+/* ⚡ REMOVE HEAVY LOADER (causes perceived slowness) */
+#loader{display:none;}
 
 /* NAVBAR */
 nav{
 position:fixed;
 width:100%;
-padding:20px 8%;
+padding:16px 8%;
 display:flex;
 justify-content:space-between;
-backdrop-filter:blur(10px);
-background:rgba(2,6,23,.6);
+align-items:center;
+background:#020617; /* removed blur for performance */
+border-bottom:1px solid rgba(255,255,255,.05);
 z-index:1000;
 }
 
 nav a{
 color:white;
 text-decoration:none;
-margin-left:25px;
-transition:.3s;
+margin-left:18px;
 }
 
-nav a:hover{
-color:#38bdf8;
-text-shadow:0 0 12px #38bdf8;
-}
-
-/* HERO WITH VIDEO */
+/* HERO — replaced video with gradient (HUGE speed gain) */
 .hero{
-position:relative;
-height:100vh;
+height:90vh;
 display:flex;
 justify-content:center;
 align-items:center;
 text-align:center;
-overflow:hidden;
+padding:0 20px;
+
+background:
+radial-gradient(circle at 20% 20%, #0ea5e933, transparent 40%),
+radial-gradient(circle at 80% 80%, #38bdf833, transparent 40%),
+#020617;
 }
 
-.hero video{
-position:absolute;
-width:100%;
-height:100%;
-object-fit:cover;
-z-index:-1;
-}
-
-.hero::after{
-content:'';
-position:absolute;
-inset:0;
-background:rgba(0,0,0,.6);
-}
-
-.hero-content{
-z-index:1;
-max-width:800px;
-}
+.hero-content{max-width:720px;}
 
 .hero h1{
-font-size:3.5rem;
+font-size:2.8rem;
 margin-bottom:10px;
 }
 
-.hero p{
-color:#cbd5e1;
-}
+.hero p{color:#cbd5e1;}
 
 .glow-btn{
 margin-top:20px;
-padding:15px 30px;
+padding:14px 26px;
 border:none;
-border-radius:12px;
+border-radius:10px;
 background:#0ea5e9;
 cursor:pointer;
-font-size:16px;
-transition:.4s;
-color:white;   /* ✅ THIS FIXES IT */
+font-size:15px;
+color:white;
 font-weight:600;
 }
 
-
-.glow-btn:hover{
-box-shadow:0 0 25px #0ea5e9;
-transform:scale(1.05);
-}
-
 /* SECTIONS */
-section{
-padding:120px 8%;
-}
-
-.section-title{
-text-align:center;
-font-size:2.3rem;
-margin-bottom:60px;
-}
+section{padding:90px 8%;}
+.section-title{text-align:center;font-size:2rem;margin-bottom:45px;}
 
 /* GRID */
 .grid{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-gap:25px;
+grid-template-columns:repeat(4,1fr);
+gap:18px;
 }
 
-/* PORTFOLIO */
+/* ⚡ images render faster */
 .grid img{
 width:100%;
-height:260px;
+height:220px;
 object-fit:cover;
-border-radius:14px;
-cursor:pointer;
-transition:.4s;
-}
-
-.grid img:hover{
-transform:translateY(-10px) scale(1.03);
-box-shadow:0 0 25px #0ea5e9;
+border-radius:10px;
 }
 
 /* VIDEO CARD */
 .video-card{
 background:#020617;
-border-radius:16px;
+border-radius:12px;
 overflow:hidden;
-transition:.4s;
-border:1px solid rgba(255,255,255,.05);
-}
-
-.video-card:hover{
-transform:translateY(-12px);
-box-shadow:0 0 30px rgba(14,165,233,.6);
+border:1px solid rgba(255,255,255,.03);
 }
 
 .video-card img{
 width:100%;
+aspect-ratio:16/9;
+height:auto;
+object-fit:contain;
+background:black; /* prevents empty bars looking broken */
 }
 
-.video-content{
-padding:18px;
-}
+.video-content{padding:14px;}
 
 .watch{
 display:inline-block;
-margin-top:10px;
-padding:10px 18px;
+margin-top:6px;
+padding:7px 14px;
 background:#ef4444;
-border-radius:8px;
+border-radius:6px;
 color:white;
 text-decoration:none;
-transition:.3s;
+font-size:14px;
 }
 
-.watch:hover{
-box-shadow:0 0 20px red;
-}
-
-/* IMAGE MODAL */
+/* MODAL */
 .modal{
 position:fixed;
 inset:0;
@@ -216,234 +152,61 @@ align-items:center;
 z-index:9999;
 }
 
-.modal img{
-max-width:90%;
-max-height:90%;
-border-radius:12px;
-}
+.modal img{max-width:90%;max-height:90%;border-radius:10px;}
+.close{position:absolute;top:40px;right:50px;font-size:30px;cursor:pointer;}
 
-.close{
-position:absolute;
-top:40px;
-right:60px;
-font-size:35px;
-cursor:pointer;
-}
+/* POPUP disabled for speed */
+.popup{display:none !important;}
 
-/* SCROLL ANIMATION */
-.reveal{
-opacity:0;
-transform:translateY(60px);
-transition:1s;
-}
-
-.reveal.active{
-opacity:1;
-transform:translateY(0);
-}
-
-/* POPUP */
-.popup{
-position:fixed;
-inset:0;
-background:rgba(0,0,0,.85);
-display:flex;
-justify-content:center;
-align-items:center;
-z-index:10000;
-}
-
-.popup-box{
-background:white;
-color:black;
-padding:45px;
-border-radius:18px;
-text-align:center;
-width:90%;
-max-width:420px;
-}
-
-.subscribe{
-background:red;
-color:white;
-padding:12px 22px;
-border:none;
-border-radius:8px;
-cursor:pointer;
-}
-
-.cancel{
-margin-top:10px;
-padding:10px 18px;
-border:none;
-cursor:pointer;
-}
-
-/* FLOATING WHATSAPP */
+/* WHATSAPP */
 .whatsapp-float{
 position:fixed;
-bottom:25px;
-right:25px;
-width:60px;
-height:60px;
+bottom:20px;
+right:20px;
+width:56px;
+height:56px;
 background:#25D366;
 border-radius:50%;
 display:flex;
 align-items:center;
 justify-content:center;
-font-size:30px;
+font-size:26px;
 color:white;
 text-decoration:none;
 z-index:99999;
-box-shadow:0 0 20px rgba(37,211,102,.8);
-animation:pulse 2s infinite;
 }
 
-.whatsapp-float:hover{
-transform:scale(1.1);
-}
+footer{padding:30px;text-align:center;color:#94a3b8;}
 
-@keyframes pulse{
-0%{box-shadow:0 0 0 0 rgba(37,211,102,.6);}
-70%{box-shadow:0 0 0 15px rgba(37,211,102,0);}
-100%{box-shadow:0 0 0 0 rgba(37,211,102,0);}
-}
-
-footer{
-padding:40px;
-text-align:center;
-color:#94a3b8;
-}
-
-
-  .contact-box{
-max-width:700px;
+/* CONTACT */
+.contact-box{
+max-width:650px;
 margin:auto;
 text-align:center;
 background:#020617;
-padding:60px 30px;
-border-radius:18px;
+padding:45px 24px;
+border-radius:14px;
 border:1px solid rgba(255,255,255,.05);
 }
 
-.contact-box p{
-color:#cbd5e1;
-margin:15px 0 25px;
-}
-
 .contact-btn{
-padding:16px 34px;
-font-size:18px;
+padding:13px 26px;
+font-size:15px;
 border:none;
-border-radius:12px;
+border-radius:9px;
 background:#22c55e;
 color:white;
 cursor:pointer;
-transition:.4s;
 }
 
-.contact-btn:hover{
-transform:scale(1.05);
-box-shadow:0 0 25px #22c55e;
+/* RESPONSIVE */
+@media (max-width:1100px){
+.grid{grid-template-columns:repeat(2,1fr);} 
 }
 
-
-  @media (min-width:1600px){
-
-.hero h1{
-font-size:4.5rem;
-}
-
-section{
-padding:140px 12%;
-}
-
-}
-
-
-  @media (max-width:1200px){
-
-.hero h1{
-font-size:3rem;
-}
-
-}
-@media (max-width:900px){
-
-nav{
-padding:18px 5%;
-}
-
-.hero h1{
-font-size:2.5rem;
-}
-
-section{
-padding:90px 5%;
-}
-
-}
 @media (max-width:600px){
-
-.hero h1{
-font-size:2rem;
-line-height:1.2;
-}
-
-.hero p{
-font-size:14px;
-}
-
-.glow-btn{
-padding:12px 22px;
-font-size:14px;
-}
-
-.section-title{
-font-size:1.8rem;
-}
-
-nav h2{
-font-size:18px;
-}
-
-nav a{
-margin-left:12px;
-font-size:14px;
-}
-
-/* smaller images */
-.grid img{
-height:200px;
-}
-
-/* popup fits screen */
-.popup-box{
-padding:30px 20px;
-}
-
-.whatsapp-float{
-width:55px;
-height:55px;
-font-size:26px;
-}
-
-}
-@media (max-width:380px){
-
-.hero h1{
-font-size:1.6rem;
-}
-
-.hero p{
-font-size:13px;
-}
-
-.glow-btn{
-font-size:13px;
-padding:10px 18px;
-}
-
+.grid{grid-template-columns:1fr;} 
+.hero h1{font-size:2rem;} 
 }
 
 </style>
@@ -451,193 +214,127 @@ padding:10px 18px;
 
 <body>
 
-<!-- LOADER -->
-<div id="loader">
-<div class="spinner"></div>
-</div>
-
 <!-- NAV -->
 <nav>
-<h2>Sky Creatives</h2>
-
+<h2 style="letter-spacing:2px;font-weight:700;">SKY<span style="color:#38bdf8;">CREATIVES</span></h2>
 <div>
 <a href="#portfolio">Portfolio</a>
 <a href="#videos">Videos</a>
+<a href="#contact">Contact</a>
 </div>
 </nav>
 
 <!-- HERO -->
 <div class="hero">
-
-<video autoplay muted loop>
-<source src="hero-video.mp4" type="video/mp4">
-</video>
-
 <div class="hero-content">
 <h1>We Create Cinematic Visual Experiences</h1>
 <p>Premium design, branding, and 3D animation studio.</p>
 
-<button class="glow-btn"
-onclick="document.getElementById('portfolio').scrollIntoView({behavior:'smooth'})">
+<button class="glow-btn" onclick="document.getElementById('portfolio').scrollIntoView()">
 View Work
 </button>
 </div>
-
 </div>
 
 <!-- PORTFOLIO -->
-<section id="portfolio" class="reveal">
+<section id="portfolio">
 <h2 class="section-title">Our Designs</h2>
 
 <div class="grid">
-<img loading="lazy" src="https://res.cloudinary.com/dbtmgo0zj/image/upload/f_auto,q_auto/v1770687311/design2_h8aaud.webp" onclick="openModal(this.src)">
-  <img loading="lazy" src="https://res.cloudinary.com/dbtmgo0zj/image/upload/f_auto,q_auto/v1770687311/design6_qlfso6.webp" onclick="openModal(this.src)">
-  <img loading="lazy" src="https://res.cloudinary.com/dbtmgo0zj/image/upload/f_auto,q_auto/v1770687311/design10_iixifk.webp" onclick="openModal(this.src)">
-<img loading="lazy" src="https://res.cloudinary.com/dbtmgo0zj/image/upload/f_auto,q_auto/v1770687311/design5_etba1z.webp" onclick="openModal(this.src)">
-<img loading="lazy" src="https://res.cloudinary.com/dbtmgo0zj/image/upload/f_auto,q_auto/v1770687311/design7_whgwvd.webp" onclick="openModal(this.src)">
-<img loading="lazy" src="https://res.cloudinary.com/dbtmgo0zj/image/upload/f_auto,q_auto/v1770687311/design4_femfq2.webp" onclick="openModal(this.src)">
-<img loading="lazy" src="https://res.cloudinary.com/dbtmgo0zj/image/upload/f_auto,q_auto/v1770687311/design11_hcdqpb.webp" onclick="openModal(this.src)">
+   <img loading="lazy" decoding="async" src="https://res.cloudinary.com/dbtmgo0zj/image/upload/f_auto,q_auto,w_600/v1770687311/design11_hcdqpb.webp" onclick="openModal(this.src)">
+<img loading="lazy" decoding="async" src="https://res.cloudinary.com/dbtmgo0zj/image/upload/f_auto,q_auto,w_600/v1770687311/design2_h8aaud.webp" onclick="openModal(this.src)">
+<img loading="lazy" decoding="async" src="https://res.cloudinary.com/dbtmgo0zj/image/upload/f_auto,q_auto,w_600/v1770687311/design6_qlfso6.webp" onclick="openModal(this.src)">
+<img loading="lazy" decoding="async" src="https://res.cloudinary.com/dbtmgo0zj/image/upload/f_auto,q_auto,w_600/v1770687311/design10_iixifk.webp" onclick="openModal(this.src)">
+<img loading="lazy" decoding="async" src="https://res.cloudinary.com/dbtmgo0zj/image/upload/f_auto,q_auto,w_600/v1770687311/design5_etba1z.webp" onclick="openModal(this.src)">
+  <img loading="lazy" decoding="async" src="https://res.cloudinary.com/dbtmgo0zj/image/upload/f_auto,q_auto,w_600/v1770687311/design4_femfq2.webp" onclick="openModal(this.src)">
+  <img loading="lazy" decoding="async" src="https://res.cloudinary.com/dbtmgo0zj/image/upload/f_auto,q_auto,w_600/v1770687311/design2_yf9iq8.webp" onclick="openModal(this.src)">
+  
 </div>
 </section>
-  <h2 class="section-title">Animated Images</h2>
+
+  <section id="portfolio">
+<h2 class="section-title">Animated Images</h2>
 
 <div class="grid">
+  <img loading="lazy" src="https://res.cloudinary.com/dbtmgo0zj/image/upload/f_auto,q_auto/v1770687311/s2_1_pj1elx.webp" onclick="openModal(this.src)">
 <img loading="lazy" src="https://res.cloudinary.com/dbtmgo0zj/image/upload/f_auto,q_auto/v1770687311/ani1_mtbjgt.webp" onclick="openModal(this.src)">
 <img loading="lazy" src="https://res.cloudinary.com/dbtmgo0zj/image/upload/f_auto,q_auto/v1770687311/designd_1_hlbpiq.webp" onclick="openModal(this.src)">
   <img loading="lazy" src="https://res.cloudinary.com/dbtmgo0zj/image/upload/f_auto,q_auto/v1770687311/designc_1_eyfwm6.webp" onclick="openModal(this.src)">
   <img loading="lazy" src="https://res.cloudinary.com/dbtmgo0zj/image/upload/f_auto,q_auto/v1770687311/s5a_1_d6mbzd.webp" onclick="openModal(this.src)">
-</div>  s2_1_pj1elx
-  <br>
-  <div class="grid">
- <img loading="lazy" src="https://res.cloudinary.com/dbtmgo0zj/image/upload/f_auto,q_auto/v1770687311/s5a_1_d6mbzd.webp" onclick="openModal(this.src)">
-  <img loading="lazy" src="https://res.cloudinary.com/dbtmgo0zj/image/upload/f_auto,q_auto/v1770687311/s2_1_pj1elx.webp" onclick="openModal(this.src)">
 </div>
-   
 </section>
 
 <!-- VIDEOS -->
-<section id="videos" class="reveal">
+<section id="videos">
 <h2 class="section-title">Latest Animations</h2>
-  
+
 <div class="grid">
-<div class="video-card">
-<img src="https://img.youtube.com/vi/9y1UjqN8I2w/maxresdefault.jpg">
-<div class="video-content">
-<h3> Rich Billionaire Fell in Love With a Mad Woman — What Happened Next Will Shock You | Nigerian Love
-</h3>
-<a class="watch" target="_blank"
-href="https://www.youtube.com/watch?v=9y1UjqN8I2w">Watch</a>
-</div>
 
-  
 <div class="video-card">
-<img src="https://img.youtube.com/vi/xyWfuewv3wI/maxresdefault.jpg">
+<img loading="lazy" decoding="async" src="https://img.youtube.com/vi/9y1UjqN8I2w/hqdefault.jpg">
 <div class="video-content">
-<h3>CHRONO LINK: THE FUTURE OF HUMANITY</h3>
-<a class="watch" target="_blank"
-href="https://youtu.be/xyWfuewv3wI">Watch</a>
+<h3>Rich Billionaire Fell in Love With a Mad Woman</h3>
+<a class="watch" target="_blank" href="https://www.youtube.com/watch?v=9y1UjqN8I2w">Watch</a>
 </div>
 </div>
 
 <div class="video-card">
-<img src="https://img.youtube.com/vi/S49paqxE6T0/maxresdefault.jpg">
+<img loading="lazy" decoding="async" src="https://img.youtube.com/vi/xyWfuewv3wI/hqdefault.jpg">
 <div class="video-content">
-<h3>Chrono Link: Seconds Before Tomorrow </h3>
-<a class="watch" target="_blank"
-href="https://youtu.be/S49paqxE6T0">Watch</a>
+<h3>Chrono Link: The Future of Humanity</h3>
+<a class="watch" target="_blank" href="https://youtu.be/xyWfuewv3wI">Watch</a>
 </div>
 </div>
 
 <div class="video-card">
-<img src="https://img.youtube.com/vi/9pD5hQNStpo/hqdefault.jpg">
+<img loading="lazy" decoding="async" src="https://img.youtube.com/vi/S49paqxE6T0/hqdefault.jpg">
 <div class="video-content">
-<h3>Love under the baobab tree</h3>
-<a class="watch" target="_blank"
-href="https://youtu.be/9pD5hQNStpo">Watch</a>
+<h3>Chrono Link: Seconds Before Tomorrow</h3>
+<a class="watch" target="_blank" href="https://youtu.be/S49paqxE6T0">Watch</a>
 </div>
 </div>
-
-
 
 <div class="video-card">
-<img src="https://img.youtube.com/vi/1PvBeBC-euw/hqdefault.jpg">
+<img loading="lazy" decoding="async" src="https://img.youtube.com/vi/9pD5hQNStpo/hqdefault.jpg">
 <div class="video-content">
-<h3>Love Knows No Distnce</h3>
-<a class="watch" target="_blank"
-href="https://youtu.be/1PvBeBC-euw">Watch</a>
+<h3>Love Under the Baobab Tree</h3>
+<a class="watch" target="_blank" href="https://youtu.be/9pD5hQNStpo">Watch</a>
 </div>
 </div>
-
 
 </div>
 </section>
 
-<!-- IMAGE MODAL -->
+<!-- MODAL -->
 <div class="modal" id="modal">
 <span class="close" onclick="closeModal()">✕</span>
 <img id="modalImg">
 </div>
 
-<!-- POPUP -->
-<div class="popup" id="popup">
-<div class="popup-box">
-<h2>🎥 Love Creative Animations?</h2>
-<p>
+<a href="https://wa.me/233534023396" class="whatsapp-float" target="_blank">💬</a>
 
-🚀 Subscribe for stunning animations, creative designs, and exclusive content.</p>
-<a target="_blank"
-href="https://www.youtube.com/@skycreativesstudios">
-<button class="subscribe">Subscribe</button>
-</a>
-
-<br>
-<button class="cancel" onclick="closePopup()">Maybe Later</button>
-</div>
-</div>
-
-<!-- WHATSAPP BUTTON -->
-<a href="https://wa.me/233534023396" 
-class="whatsapp-float" 
-target="_blank">
-💬
-</a>
-
-  <!-- CONTACT SECTION -->
-<section id="contact" class="reveal">
-
+<!-- CONTACT -->
+<section id="contact">
 <h2 class="section-title">Contact Us</h2>
 
 <div class="contact-box">
-
 <h3>Let’s Build Something Amazing Together 🚀</h3>
-
-<p>
-Have a project in mind?  
-Reach out and let’s create premium visuals for your brand.
-</p>
+<p>Have a project in mind? Reach out and let’s create premium visuals for your brand.</p>
 
 <a href="https://wa.me/233534023396" target="_blank">
-<button class="contact-btn">
-Message Us on WhatsApp
-</button>
+<button class="contact-btn">Message Us on WhatsApp</button>
 </a>
-
 </div>
-
 </section>
 
-<footer>
-© 2026 Sky Creatives
-</footer>
+<footer>© 2026 Sky Creatives</footer>
 
 <script>
 
-/* LOADER */
-window.addEventListener("load",()=>{
-document.getElementById("loader").style.display="none";
-});
+/* Modal */
+const modal=document.getElementById("modal");
+const modalImg=document.getElementById("modalImg");
 
-/* IMAGE MODAL */
 function openModal(src){
 modal.style.display="flex";
 modalImg.src=src;
@@ -647,39 +344,10 @@ function closeModal(){
 modal.style.display="none";
 }
 
-/* POPUP */
-setTimeout(()=>{
-popup.style.display="flex";
-},1500);
-
-function closePopup(){
-popup.style.display="none";
-}
-
-/* SCROLL REVEAL */
-const reveals=document.querySelectorAll(".reveal");
-
-window.addEventListener("scroll",()=>{
-reveals.forEach(el=>{
-const top=el.getBoundingClientRect().top;
-if(top<window.innerHeight-100){
-el.classList.add("active");
-}
-});
-});
-
- 
-
 </script>
 
 </body>
 </html>
-
-
-
-
-
-
 
 
 
