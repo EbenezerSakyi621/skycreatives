@@ -58,7 +58,9 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-        background: #020617; /* removed blur for performance */
+        background: rgba(2, 6, 23, 0.6);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
         border-bottom: 1px solid rgba(255, 255, 255, 0.05);
         z-index: 1000;
       }
