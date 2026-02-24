@@ -210,7 +210,97 @@ cursor:pointer;
 .grid{grid-template-columns:1fr;} 
 .hero h1{font-size:2rem;} 
 }
+/* ============================= */
+/* 🔥 ANIMATIONS ADDED */
+/* ============================= */
 
+/* Navbar slide down */
+nav{
+animation: slideDown 0.8s ease-out;
+}
+
+@keyframes slideDown{
+from{transform:translateY(-100%); opacity:0;}
+to{transform:translateY(0); opacity:1;}
+}
+
+/* Hero text fade */
+.hero h1{
+animation: fadeUp 1s ease forwards;
+opacity:0;
+}
+
+.hero p{
+animation: fadeUp 1.2s ease forwards;
+opacity:0;
+}
+
+.glow-btn{
+animation: fadeUp 1.4s ease forwards;
+opacity:0;
+transition:0.3s ease;
+}
+
+/* Glow button hover */
+.glow-btn:hover{
+transform:scale(1.05);
+box-shadow:0 0 20px #0ea5e9;
+}
+
+/* Section reveal animation */
+section{
+opacity:0;
+transform:translateY(60px);
+transition:all 0.8s ease;
+}
+
+section.show{
+opacity:1;
+transform:translateY(0);
+}
+
+/* Grid image hover */
+.grid img{
+transition:transform 0.4s ease, box-shadow 0.4s ease;
+cursor:pointer;
+}
+
+.grid img:hover{
+transform:scale(1.05);
+box-shadow:0 15px 30px rgba(0,0,0,0.5);
+}
+
+/* Video card hover */
+.video-card{
+transition:transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.video-card:hover{
+transform:translateY(-10px);
+box-shadow:0 15px 40px rgba(0,0,0,0.6);
+}
+
+/* Modal zoom animation */
+.modal img{
+animation: zoomIn 0.4s ease;
+}
+
+@keyframes zoomIn{
+from{transform:scale(0.8); opacity:0;}
+to{transform:scale(1); opacity:1;}
+}
+
+/* FadeUp Keyframe */
+@keyframes fadeUp{
+from{
+opacity:0;
+transform:translateY(30px);
+}
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
 </style>
 </head>
 
@@ -380,11 +470,28 @@ modalImg.src=src;
 function closeModal(){
 modal.style.display="none";
 }
+/* Scroll Reveal Animation */
+const sections = document.querySelectorAll("section");
 
+const revealOnScroll = () => {
+const triggerBottom = window.innerHeight * 0.85;
+
+sections.forEach(section => {
+const sectionTop = section.getBoundingClientRect().top;
+
+if(sectionTop < triggerBottom){
+section.classList.add("show");
+}
+});
+};
+
+window.addEventListener("scroll", revealOnScroll);
+window.addEventListener("load", revealOnScroll);
 </script>
 
 </body>
 </html>
+
 
 
 
