@@ -1,506 +1,937 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<!-- SEO -->
-<meta name="description" content="Sky Creatives is a premium design and animation studio creating cinematic visuals, branding, and 3D animations for modern businesses.">
-<meta name="keywords" content="animation studio Ghana, design agency Ghana, 3D animation, branding studio, creative agency, motion graphics">
-<meta name="author" content="Sky Creatives">
-
-<link rel="icon" type="image/png" href="favicon.png">
-
-<!-- ⚡ ULTRA FAST FONT -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-
-<title>Sky Creatives</title>
-
-<style>
-
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:'Poppins',sans-serif;
-}
-
-html{scroll-behavior:smooth;}
-
-body{
-background:#020617;
-color:white;
-overflow-x:hidden;
-}
-
-/* ⚡ REMOVE HEAVY LOADER (causes perceived slowness) */
-#loader{display:none;}
-
-/* NAVBAR */
-nav{
-position:fixed;
-width:100%;
-padding:16px 8%;
-display:flex;
-justify-content:space-between;
-align-items:center;
-background:#020617; /* removed blur for performance */
-border-bottom:1px solid rgba(255,255,255,.05);
-z-index:1000;
-}
-
-nav a{
-color:white;
-text-decoration:none;
-margin-left:18px;
-}
-
-/* HERO — replaced video with gradient (HUGE speed gain) */
-.hero{
-height:90vh;
-display:flex;
-justify-content:center;
-align-items:center;
-text-align:center;
-padding:0 20px;
-
-background:
-radial-gradient(circle at 20% 20%, #0ea5e933, transparent 40%),
-radial-gradient(circle at 80% 80%, #38bdf833, transparent 40%),
-#020617;
-}
-
-.hero-content{max-width:720px;}
-
-.hero h1{
-font-size:2.8rem;
-margin-bottom:10px;
-}
-
-.hero p{color:#cbd5e1;}
-
-.glow-btn{
-margin-top:20px;
-padding:14px 26px;
-border:none;
-border-radius:10px;
-background:#0ea5e9;
-cursor:pointer;
-font-size:15px;
-color:white;
-font-weight:600;
-}
-
-/* SECTIONS */
-section{padding:90px 8%;}
-.section-title{text-align:center;font-size:2rem;margin-bottom:45px;}
-
-/* GRID */
-.grid{
-display:grid;
-grid-template-columns:repeat(auto-fit, minmax(260px, 1fr));
-gap:18px;
-max-width:1400px;
-margin:auto;
-}
-
-/* ⚡ images render faster */
-.grid img{
-width:100%;
-height:220px;
-object-fit:cover;
-border-radius:10px;
-}
-
-/* VIDEO CARD */
-.video-card{
-background:#020617;
-border-radius:12px;
-overflow:hidden;
-border:1px solid rgba(255,255,255,.03);
-}
-
-.video-card img{
-width:100%;
-aspect-ratio:16/9;
-height:auto;
-object-fit:contain;
-background:black; /* prevents empty bars looking broken */
-}
-
-.video-content{padding:14px;}
-
-.watch{
-display:inline-block;
-margin-top:6px;
-padding:7px 14px;
-background:#ef4444;
-border-radius:6px;
-color:white;
-text-decoration:none;
-font-size:14px;
-}
-
-/* MODAL */
-.modal{
-position:fixed;
-inset:0;
-background:rgba(0,0,0,.95);
-display:none;
-justify-content:center;
-align-items:center;
-z-index:9999;
-}
-
-.modal img{max-width:90%;max-height:90%;border-radius:10px;}
-.close{position:absolute;top:40px;right:50px;font-size:30px;cursor:pointer;}
-
-/* POPUP disabled for speed */
-.popup{display:none !important;}
-
-/* WHATSAPP */
-.whatsapp-float{
-position:fixed;
-bottom:20px;
-right:20px;
-width:56px;
-height:56px;
-background:#25D366;
-border-radius:50%;
-display:flex;
-align-items:center;
-justify-content:center;
-font-size:26px;
-color:white;
-text-decoration:none;
-z-index:99999;
-}
-
-footer{padding:30px;text-align:center;color:#94a3b8;}
-
-/* CONTACT */
-.contact-box{
-max-width:650px;
-margin:auto;
-text-align:center;
-background:#020617;
-padding:45px 24px;
-border-radius:14px;
-border:1px solid rgba(255,255,255,.05);
-}
-
-.contact-btn{
-padding:13px 26px;
-font-size:15px;
-border:none;
-border-radius:9px;
-background:#22c55e;
-color:white;
-cursor:pointer;
-}
-
-/* RESPONSIVE */
-@media (max-width:1100px){
-.grid{grid-template-columns:repeat(2,1fr);} 
-}
-
-@media (max-width:600px){
-.grid{grid-template-columns:1fr;} 
-.hero h1{font-size:2rem;} 
-}
-/* ============================= */
-/* 🔥 ANIMATIONS ADDED */
-/* ============================= */
-
-/* Navbar slide down */
-nav{
-animation: slideDown 0.8s ease-out;
-}
-
-@keyframes slideDown{
-from{transform:translateY(-100%); opacity:0;}
-to{transform:translateY(0); opacity:1;}
-}
-
-/* Hero text fade */
-.hero h1{
-animation: fadeUp 1s ease forwards;
-opacity:0;
-}
-
-.hero p{
-animation: fadeUp 1.2s ease forwards;
-opacity:0;
-}
-
-.glow-btn{
-animation: fadeUp 1.4s ease forwards;
-opacity:0;
-transition:0.3s ease;
-}
-
-/* Glow button hover */
-.glow-btn:hover{
-transform:scale(1.05);
-box-shadow:0 0 20px #0ea5e9;
-}
-
-/* Section reveal animation */
-section{
-opacity:0;
-transform:translateY(60px);
-transition:all 0.8s ease;
-}
-
-section.show{
-opacity:1;
-transform:translateY(0);
-}
-
-/* Grid image hover */
-.grid img{
-transition:transform 0.4s ease, box-shadow 0.4s ease;
-cursor:pointer;
-}
-
-.grid img:hover{
-transform:scale(1.05);
-box-shadow:0 15px 30px rgba(0,0,0,0.5);
-}
-
-/* Video card hover */
-.video-card{
-transition:transform 0.4s ease, box-shadow 0.4s ease;
-}
-
-.video-card:hover{
-transform:translateY(-10px);
-box-shadow:0 15px 40px rgba(0,0,0,0.6);
-}
-
-/* Modal zoom animation */
-.modal img{
-animation: zoomIn 0.4s ease;
-}
-
-@keyframes zoomIn{
-from{transform:scale(0.8); opacity:0;}
-to{transform:scale(1); opacity:1;}
-}
-
-/* FadeUp Keyframe */
-@keyframes fadeUp{
-from{
-opacity:0;
-transform:translateY(30px);
-}
-to{
-opacity:1;
-transform:translateY(0);
-}
-}
-</style>
-</head>
-
-<body>
-
-<!-- NAV -->
-<nav>
-<h2 style="letter-spacing:2px;font-weight:700;">SKY<span style="color:#38bdf8;">CREATIVES</span></h2>
-<div>
-<a href="#portfolio">Portfolio</a>
-<a href="#videos">Videos</a>
-<a href="#contact">Contact</a>
-</div>
-</nav>
-
-<!-- HERO -->
-<div class="hero">
-<div class="hero-content">
-<h1>We Create Cinematic Visual Experiences</h1>
-<p>Premium design, branding, and 3D animation studio.</p>
-
-<button class="glow-btn" onclick="document.getElementById('portfolio').scrollIntoView()">
-View Work
-</button>
-</div>
-</div>
-
-<!-- PORTFOLIO -->
-<section id="portfolio">
-<h2 class="section-title">Our Designs</h2>
-
-<div class="grid">
-  <img loading="lazy" decoding="async" src="https://res.cloudinary.com/deo45saux/image/upload/f_auto,q_auto,w_600/v1771892918/White_and_Green_Burger_Social_Media_Graphic_whrgft.png" onclick="openModal(this.src)">
-  <img loading="lazy" decoding="async" src="https://res.cloudinary.com/deo45saux/image/upload/f_auto,q_auto,w_600/v1771891989/1600w-Xn2zcYGK_DQ_jr23he.webp" onclick="openModal(this.src)">
-  <img loading="lazy" decoding="async" src="https://res.cloudinary.com/deo45saux/image/upload/f_auto,q_auto,w_600/v1771892678/Red_and_White_Modern_Shawarma_Masculine_Instagram_Post_x4qeks.png" onclick="openModal(this.src)">
-<img loading="lazy" decoding="async" src="https://res.cloudinary.com/deo45saux/image/upload/f_auto,q_auto,w_600/v1771891910/1600w-cfTtLz1eiM4_rfjcpx.webp" onclick="openModal(this.src)">
-
-
-  
-  <img loading="lazy" decoding="async" src="https://res.cloudinary.com/deo45saux/image/upload/f_auto,q_auto,w_600/v1771891667/1280w-ANidpBnqwI4_tunuro.webp" onclick="openModal(this.src)">
-    <img loading="lazy" decoding="async" src="https://res.cloudinary.com/deo45saux/image/upload/f_auto,q_auto,w_600/v1771891559/1280w-lxsERL-AFOo_nyt4cn.webp" onclick="openModal(this.src)">
-  <img loading="lazy" decoding="async" src="https://res.cloudinary.com/deo45saux/image/upload/f_auto,q_auto,w_600/v1771891338/1600w-O1hXi2mGeA4_ju5m2k.webp" onclick="openModal(this.src)">
-    <img loading="lazy" decoding="async" src="https://res.cloudinary.com/deo45saux/image/upload/f_auto,q_auto,w_600/v1771891989/1600w-Xn2zcYGK_DQ_jr23he.webp" onclick="openModal(this.src)">
-<img loading="lazy" decoding="async" src="https://res.cloudinary.com/deo45saux/image/upload/f_auto,q_auto,w_600/v1771892918/White_and_Green_Burger_Social_Media_Graphic_whrgft.png" onclick="openModal(this.src)">
-  
-<img loading="lazy" decoding="async" src="https://res.cloudinary.com/deo45saux/image/upload/f_auto,q_auto,w_600/v1771892436/Orange_and_Brown_Modern_Food_Promo_Instagram_Post_uckxvd.png" onclick="openModal(this.src)">
-  
-<img loading="lazy" decoding="async" src="https://res.cloudinary.com/deo45saux/image/upload/f_auto,q_auto,w_600/v1771892171/1600w-366DDNyeJAs_wwshxf.webp" onclick="openModal(this.src)">
-  
-<img loading="lazy" decoding="async" src="https://res.cloudinary.com/dbtmgo0zj/image/upload/f_auto,q_auto,w_600/v1770687311/design5_etba1z.webp" onclick="openModal(this.src)">
-  <img loading="lazy" decoding="async" src="https://res.cloudinary.com/dbtmgo0zj/image/upload/f_auto,q_auto,w_600/v1770687311/design11_hcdqpb.webp" onclick="openModal(this.src)">
-  <img loading="lazy" decoding="async" src="https://res.cloudinary.com/dbtmgo0zj/image/upload/f_auto,q_auto,w_600/v1770687311/design2_yf9iq8.webp" onclick="openModal(this.src)">
-  <img loading="lazy" decoding="async" src="https://res.cloudinary.com/dbtmgo0zj/image/upload/f_auto,q_auto,w_600/v1770687311/design4_femfq2.webp" onclick="openModal(this.src)">
-</div>
-</section>
-
-  <section id="portfolio">
-<h2 class="section-title">Animated Images</h2>
-
-<div class="grid">
-    <img loading="lazy" decoding="async" src="https://res.cloudinary.com/deo45saux/image/upload/f_auto,q_auto,w_600/v1771890738/m1_kwu8xd.png" onclick="openModal(this.src)">
-  <img loading="lazy" decoding="async" src="https://res.cloudinary.com/deo45saux/image/upload/f_auto,q_auto,w_600/v1771890734/h1_rwtrbs.png" onclick="openModal(this.src)">
-<img loading="lazy" decoding="async" src="https://res.cloudinary.com/dbtmgo0zj/image/upload/f_auto,q_auto,w_600/v1770687311/designd_1_hlbpiq.webp" onclick="openModal(this.src)">
-<img loading="lazy" decoding="async" src="https://res.cloudinary.com/dbtmgo0zj/image/upload/f_auto,q_auto,w_600/v1770687311/designc_1_eyfwm6.webp" onclick="openModal(this.src)">
-<img loading="lazy" decoding="async" src="https://res.cloudinary.com/dbtmgo0zj/image/upload/f_auto,q_auto,w_600/v1770687311/s5a_1_d6mbzd.webp" onclick="openModal(this.src)">
-<img loading="lazy" decoding="async" src="https://res.cloudinary.com/dbtmgo0zj/image/upload/f_auto,q_auto,w_600/v1770687311/ani_lpagld.webp" onclick="openModal(this.src)">
-  <img loading="lazy" decoding="async" src="https://res.cloudinary.com/dbtmgo0zj/image/upload/f_auto,q_auto,w_600/v1770687311/ani1_mtbjgt.webp" onclick="openModal(this.src)">
-
-</div>
-</section>
-
-<!-- VIDEOS -->
-<section id="videos">
-<h2 class="section-title">Latest Animations</h2>
-
-<div class="grid">
-
-
-<div class="video-card">
-<img loading="lazy" decoding="async" src="https://img.youtube.com/vi/386ej72GYa0/hqdefault.jpg">
-<div class="video-content">
-<h3>Alhamdulillah – Kwesi Arthur ft Black Sherif & Big Hommie Flee Official 3D Animated Music Video</h3>
-<a class="watch" target="_blank" href="https://www.youtube.com/watch?v=386ej72GYa0">Watch</a>
-</div>
-</div>
-
-
-  
-<div class="video-card">
-<img loading="lazy" decoding="async" src="https://img.youtube.com/vi/-8uIM31sBos/hqdefault.jpg">
-<div class="video-content">
-<h3>Black Sherif – Top of the Morning 3D Animated Visual | Fan Made</h3>
-<a class="watch" target="_blank" href="https://www.youtube.com/watch?v=-8uIM31sBos">Watch</a>
-</div>
-</div>
-  
-<div class="video-card">
-<img loading="lazy" decoding="async" src="https://img.youtube.com/vi/9y1UjqN8I2w/hqdefault.jpg">
-<div class="video-content">
-<h3>Rich Billionaire Fell in Love With a Mad Woman</h3>
-<a class="watch" target="_blank" href="https://www.youtube.com/watch?v=9y1UjqN8I2w">Watch</a>
-</div>
-</div>
-
-<div class="video-card">
-<img loading="lazy" decoding="async" src="https://img.youtube.com/vi/xyWfuewv3wI/hqdefault.jpg">
-<div class="video-content">
-<h3>Chrono Link: The Future of Humanity</h3>
-<a class="watch" target="_blank" href="https://youtu.be/xyWfuewv3wI">Watch</a>
-</div>
-</div>
-
-<div class="video-card">
-<img loading="lazy" decoding="async" src="https://img.youtube.com/vi/S49paqxE6T0/hqdefault.jpg">
-<div class="video-content">
-<h3>Chrono Link: Seconds Before Tomorrow</h3>
-<a class="watch" target="_blank" href="https://youtu.be/S49paqxE6T0">Watch</a>
-</div>
-</div>
-
-<div class="video-card">
-<img loading="lazy" decoding="async" src="https://img.youtube.com/vi/9pD5hQNStpo/hqdefault.jpg">
-<div class="video-content">
-<h3>Love Under the Baobab Tree</h3>
-<a class="watch" target="_blank" href="https://youtu.be/9pD5hQNStpo">Watch</a>
-</div>
-</div>
-
-</div>
-</section>
-
-<!-- MODAL -->
-<div class="modal" id="modal">
-<span class="close" onclick="closeModal()">✕</span>
-<img id="modalImg">
-</div>
-
-<a href="https://wa.me/233534023396" class="whatsapp-float" target="_blank">💬</a>
-
-<!-- CONTACT -->
-<section id="contact">
-<h2 class="section-title">Contact Us</h2>
-
-<div class="contact-box">
-<h3>Let’s Build Something Amazing Together 🚀</h3>
-<p>Have a project in mind? Reach out and let’s create premium visuals for your brand.</p>
-
-<a href="https://wa.me/233534023396" target="_blank">
-<button class="contact-btn">Message Us on WhatsApp</button>
-</a>
-</div>
-</section>
-
-<footer>© 2026 Sky Creatives</footer>
-
-<script>
-
-/* Modal */
-const modal=document.getElementById("modal");
-const modalImg=document.getElementById("modalImg");
-
-function openModal(src){
-modal.style.display="flex";
-modalImg.src=src;
-}
-
-function closeModal(){
-modal.style.display="none";
-}
-/* Scroll Reveal Animation */
-const sections = document.querySelectorAll("section");
-
-const revealOnScroll = () => {
-const triggerBottom = window.innerHeight * 0.85;
-
-sections.forEach(section => {
-const sectionTop = section.getBoundingClientRect().top;
-
-if(sectionTop < triggerBottom){
-section.classList.add("show");
-}
-});
-};
-
-window.addEventListener("scroll", revealOnScroll);
-window.addEventListener("load", revealOnScroll);
-</script>
-
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- SEO -->
+    <meta
+      name="description"
+      content="Sky Creatives is a premium design and animation studio creating cinematic visuals, branding, and 3D animations for modern businesses."
+    />
+    <meta
+      name="keywords"
+      content="animation studio Ghana, design agency Ghana, 3D animation, branding studio, creative agency, motion graphics"
+    />
+    <meta name="author" content="Sky Creatives" />
+
+    <link rel="icon" type="image/png" href="favicon.png" />
+
+    <!-- ⚡ ULTRA FAST FONT -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <title>Sky Creatives</title>
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Poppins', sans-serif;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        background: #020617;
+        color: white;
+        overflow-x: hidden;
+      }
+
+      /* ⚡ REMOVE HEAVY LOADER (causes perceived slowness) */
+      #loader {
+        display: none;
+      }
+
+      /* NAVBAR */
+      nav {
+        position: fixed;
+        width: 100%;
+        padding: 16px 8%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: #020617; /* removed blur for performance */
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        z-index: 1000;
+      }
+
+      nav a {
+        color: white;
+        text-decoration: none;
+        margin-left: 18px;
+      }
+
+      /* HERO — replaced video with gradient (HUGE speed gain) */
+      .hero {
+        height: 90vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        padding: 0 20px;
+
+        background:
+          radial-gradient(circle at 20% 20%, #0ea5e933, transparent 40%),
+          radial-gradient(circle at 80% 80%, #38bdf833, transparent 40%),
+          #020617;
+      }
+
+      .hero-content {
+        max-width: 720px;
+      }
+
+      .hero h1 {
+        font-size: 2.8rem;
+        margin-bottom: 10px;
+      }
+
+      .hero p {
+        color: #cbd5e1;
+      }
+
+      .glow-btn {
+        margin-top: 20px;
+        padding: 14px 26px;
+        border: none;
+        border-radius: 10px;
+        background: #0ea5e9;
+        cursor: pointer;
+        font-size: 15px;
+        color: white;
+        font-weight: 600;
+      }
+
+      /* SECTIONS */
+      section {
+        padding: 90px 8%;
+      }
+      .section-title {
+        text-align: center;
+        font-size: 2rem;
+        margin-bottom: 45px;
+      }
+
+      /* GRID */
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 18px;
+        max-width: 1400px;
+        margin: auto;
+      }
+
+      /* ⚡ images render faster */
+      .grid img {
+        width: 100%;
+        height: 220px;
+        object-fit: cover;
+        border-radius: 10px;
+      }
+
+      /* VIDEO CARD */
+      .video-card {
+        background: #020617;
+        border-radius: 12px;
+        overflow: hidden;
+        border: 1px solid rgba(255, 255, 255, 0.03);
+      }
+
+      .video-card img {
+        width: 100%;
+        aspect-ratio: 16/9;
+        height: auto;
+        object-fit: contain;
+        background: black; /* prevents empty bars looking broken */
+      }
+
+      .video-content {
+        padding: 14px;
+      }
+
+      .watch {
+        display: inline-block;
+        margin-top: 6px;
+        padding: 7px 14px;
+        background: #ef4444;
+        border-radius: 6px;
+        color: white;
+        text-decoration: none;
+        font-size: 14px;
+      }
+
+      /* MODAL */
+      .modal {
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.95);
+        display: none;
+        justify-content: center;
+        align-items: center;
+        z-index: 9999;
+      }
+
+      .modal img {
+        max-width: 90%;
+        max-height: 90%;
+        border-radius: 10px;
+      }
+      .close {
+        position: absolute;
+        top: 40px;
+        right: 50px;
+        font-size: 30px;
+        cursor: pointer;
+      }
+
+      /* POPUP disabled for speed */
+      .popup {
+        display: none !important;
+      }
+
+      /* WHATSAPP */
+      .whatsapp-float {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        width: 56px;
+        height: 56px;
+        background: #25d366;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 26px;
+        color: white;
+        text-decoration: none;
+        z-index: 99999;
+      }
+
+      footer {
+        padding: 30px;
+        text-align: center;
+        color: #94a3b8;
+      }
+
+      /* CONTACT */
+      .contact-box {
+        max-width: 650px;
+        margin: auto;
+        text-align: center;
+        background: #020617;
+        padding: 45px 24px;
+        border-radius: 14px;
+        border: 1px solid rgba(255, 255, 255, 0.05);
+      }
+
+      .contact-btn {
+        padding: 13px 26px;
+        font-size: 15px;
+        border: none;
+        border-radius: 9px;
+        background: #22c55e;
+        color: white;
+        cursor: pointer;
+      }
+
+      /* RESPONSIVE */
+      @media (max-width: 1100px) {
+        .grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+
+      @media (max-width: 600px) {
+        .grid {
+          grid-template-columns: 1fr;
+        }
+        .hero h1 {
+          font-size: 2rem;
+        }
+      }
+      /* ============================= */
+      /* 🔥 ANIMATIONS ADDED */
+      /* ============================= */
+
+      /* Navbar slide down */
+      nav {
+        animation: slideDown 0.8s ease-out;
+      }
+
+      @keyframes slideDown {
+        from {
+          transform: translateY(-100%);
+          opacity: 0;
+        }
+        to {
+          transform: translateY(0);
+          opacity: 1;
+        }
+      }
+
+      /* Hero text fade */
+      .hero h1 {
+        animation: fadeUp 1s ease forwards;
+        opacity: 0;
+      }
+
+      .hero p {
+        animation: fadeUp 1.2s ease forwards;
+        opacity: 0;
+      }
+
+      .glow-btn {
+        animation: fadeUp 1.4s ease forwards;
+        opacity: 0;
+        transition: 0.3s ease;
+      }
+
+      /* Glow button hover */
+      .glow-btn:hover {
+        transform: scale(1.05);
+        box-shadow: 0 0 20px #0ea5e9;
+      }
+
+      /* Section reveal animation */
+      section {
+        opacity: 0;
+        transform: translateY(60px);
+        transition: all 0.8s ease;
+      }
+
+      section.show {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* Grid image hover */
+      .grid img {
+        transition:
+          transform 0.4s ease,
+          box-shadow 0.4s ease;
+        cursor: pointer;
+      }
+
+      .grid img:hover {
+        transform: scale(1.05);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
+      }
+
+      /* Video card hover */
+      .video-card {
+        transition:
+          transform 0.4s ease,
+          box-shadow 0.4s ease;
+      }
+
+      .video-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
+      }
+
+      /* Modal zoom animation */
+      .modal img {
+        animation: zoomIn 0.4s ease;
+      }
+
+      @keyframes zoomIn {
+        from {
+          transform: scale(0.8);
+          opacity: 0;
+        }
+        to {
+          transform: scale(1);
+          opacity: 1;
+        }
+      }
+
+      /* FadeUp Keyframe */
+      @keyframes fadeUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      /* ================================= */
+      /* 🎬 CINEMATIC UPGRADE */
+      /* ================================= */
+
+      /* Animated Hero Gradient */
+      .hero {
+        background: linear-gradient(-45deg, #020617, #0f172a, #0ea5e9, #020617);
+        background-size: 400% 400%;
+        animation: gradientMove 15s ease infinite;
+        position: relative;
+        overflow: hidden;
+      }
+
+      @keyframes gradientMove {
+        0% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+        100% {
+          background-position: 0% 50%;
+        }
+      }
+
+      /* Floating light particles */
+      .hero::before {
+        content: '';
+        position: absolute;
+        width: 200%;
+        height: 200%;
+        background-image: radial-gradient(
+          rgba(255, 255, 255, 0.1) 1px,
+          transparent 1px
+        );
+        background-size: 40px 40px;
+        animation: moveParticles 40s linear infinite;
+        opacity: 0.2;
+      }
+
+      @keyframes moveParticles {
+        from {
+          transform: translateY(0);
+        }
+        to {
+          transform: translateY(-200px);
+        }
+      }
+
+      /* Cinematic text reveal */
+      .hero h1 {
+        letter-spacing: 1px;
+        animation: cinematicText 1.2s ease forwards;
+      }
+
+      @keyframes cinematicText {
+        0% {
+          opacity: 0;
+          transform: translateY(50px) scale(0.95);
+        }
+        100% {
+          opacity: 1;
+          transform: translateY(0) scale(1);
+        }
+      }
+
+      /* Parallax subtle effect */
+      section {
+        will-change: transform;
+      }
+
+      .parallax {
+        transform: translateZ(0);
+      }
+
+      /* Glow border animation on cards */
+      .video-card {
+        position: relative;
+        overflow: hidden;
+      }
+
+      .video-card::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        border-radius: 12px;
+        padding: 1px;
+        background: linear-gradient(45deg, #0ea5e9, #38bdf8, #0ea5e9);
+        -webkit-mask:
+          linear-gradient(#000 0 0) content-box,
+          linear-gradient(#000 0 0);
+        -webkit-mask-composite: xor;
+        mask-composite: exclude;
+        animation: borderGlow 3s linear infinite;
+        opacity: 0.6;
+      }
+
+      @keyframes borderGlow {
+        0% {
+          filter: hue-rotate(0deg);
+        }
+        100% {
+          filter: hue-rotate(360deg);
+        }
+      }
+
+      /* Floating WhatsApp button */
+      .whatsapp-float {
+        animation: floatBtn 3s ease-in-out infinite;
+      }
+
+      @keyframes floatBtn {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-10px);
+        }
+      }
+
+      /* Smooth glowing section titles */
+      .section-title {
+        position: relative;
+        display: inline-block;
+      }
+
+      .section-title::after {
+        content: '';
+        display: block;
+        width: 60%;
+        height: 3px;
+        margin: 10px auto 0;
+        background: linear-gradient(90deg, #0ea5e9, #38bdf8);
+        animation: glowLine 3s linear infinite;
+      }
+
+      @keyframes glowLine {
+        0% {
+          opacity: 0.5;
+        }
+        50% {
+          opacity: 1;
+        }
+        100% {
+          opacity: 0.5;
+        }
+      }
+      /* =============================== */
+      /* 🎬 HOLLYWOOD INTRO */
+      /* =============================== */
+
+      #cinemaLoader {
+        position: fixed;
+        inset: 0;
+        background: #000;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 999999;
+        animation: fadeOut 1.2s ease forwards;
+        animation-delay: 2.2s;
+      }
+
+      .loader-logo {
+        font-size: 2rem;
+        letter-spacing: 4px;
+        font-weight: 700;
+        color: white;
+        animation: logoReveal 2s ease forwards;
+      }
+
+      .loader-logo span {
+        color: #38bdf8;
+      }
+
+      @keyframes logoReveal {
+        0% {
+          opacity: 0;
+          letter-spacing: 20px;
+        }
+        100% {
+          opacity: 1;
+          letter-spacing: 4px;
+        }
+      }
+
+      @keyframes fadeOut {
+        to {
+          opacity: 0;
+          visibility: hidden;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- NAV -->
+
+    <nav>
+      <h2 style="letter-spacing: 2px; font-weight: 700">
+        SKY<span style="color: #38bdf8">CREATIVES</span>
+      </h2>
+      <div>
+        <a href="#portfolio">Portfolio</a>
+        <a href="#videos">Videos</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </nav>
+    <div id="cinemaLoader">
+      <div class="loader-logo">SKY<span>CREATIVES</span></div>
+    </div>
+    <!-- HERO -->
+    <div class="hero">
+      <div class="hero-content">
+        <h1>We Create Cinematic Visual Experiences</h1>
+        <p>Premium design, branding, and 3D animation studio.</p>
+
+        <button
+          class="glow-btn"
+          onclick="document.getElementById('portfolio').scrollIntoView()"
+        >
+          View Work
+        </button>
+      </div>
+    </div>
+
+    <!-- PORTFOLIO -->
+    <section id="portfolio">
+      <h2 class="section-title">Our Designs</h2>
+
+      <div class="grid">
+        <img
+          loading="lazy"
+          decoding="async"
+          src="https://res.cloudinary.com/deo45saux/image/upload/f_auto,q_auto,w_600/v1771892918/White_and_Green_Burger_Social_Media_Graphic_whrgft.png"
+          onclick="openModal(this.src)"
+        />
+        <img
+          loading="lazy"
+          decoding="async"
+          src="https://res.cloudinary.com/deo45saux/image/upload/f_auto,q_auto,w_600/v1771891989/1600w-Xn2zcYGK_DQ_jr23he.webp"
+          onclick="openModal(this.src)"
+        />
+        <img
+          loading="lazy"
+          decoding="async"
+          src="https://res.cloudinary.com/deo45saux/image/upload/f_auto,q_auto,w_600/v1771892678/Red_and_White_Modern_Shawarma_Masculine_Instagram_Post_x4qeks.png"
+          onclick="openModal(this.src)"
+        />
+        <img
+          loading="lazy"
+          decoding="async"
+          src="https://res.cloudinary.com/deo45saux/image/upload/f_auto,q_auto,w_600/v1771891910/1600w-cfTtLz1eiM4_rfjcpx.webp"
+          onclick="openModal(this.src)"
+        />
+
+        <img
+          loading="lazy"
+          decoding="async"
+          src="https://res.cloudinary.com/deo45saux/image/upload/f_auto,q_auto,w_600/v1771891667/1280w-ANidpBnqwI4_tunuro.webp"
+          onclick="openModal(this.src)"
+        />
+        <img
+          loading="lazy"
+          decoding="async"
+          src="https://res.cloudinary.com/deo45saux/image/upload/f_auto,q_auto,w_600/v1771891559/1280w-lxsERL-AFOo_nyt4cn.webp"
+          onclick="openModal(this.src)"
+        />
+        <img
+          loading="lazy"
+          decoding="async"
+          src="https://res.cloudinary.com/deo45saux/image/upload/f_auto,q_auto,w_600/v1771891338/1600w-O1hXi2mGeA4_ju5m2k.webp"
+          onclick="openModal(this.src)"
+        />
+        <img
+          loading="lazy"
+          decoding="async"
+          src="https://res.cloudinary.com/deo45saux/image/upload/f_auto,q_auto,w_600/v1771891989/1600w-Xn2zcYGK_DQ_jr23he.webp"
+          onclick="openModal(this.src)"
+        />
+        <img
+          loading="lazy"
+          decoding="async"
+          src="https://res.cloudinary.com/deo45saux/image/upload/f_auto,q_auto,w_600/v1771892918/White_and_Green_Burger_Social_Media_Graphic_whrgft.png"
+          onclick="openModal(this.src)"
+        />
+
+        <img
+          loading="lazy"
+          decoding="async"
+          src="https://res.cloudinary.com/deo45saux/image/upload/f_auto,q_auto,w_600/v1771892436/Orange_and_Brown_Modern_Food_Promo_Instagram_Post_uckxvd.png"
+          onclick="openModal(this.src)"
+        />
+
+        <img
+          loading="lazy"
+          decoding="async"
+          src="https://res.cloudinary.com/deo45saux/image/upload/f_auto,q_auto,w_600/v1771892171/1600w-366DDNyeJAs_wwshxf.webp"
+          onclick="openModal(this.src)"
+        />
+
+        <img
+          loading="lazy"
+          decoding="async"
+          src="https://res.cloudinary.com/dbtmgo0zj/image/upload/f_auto,q_auto,w_600/v1770687311/design5_etba1z.webp"
+          onclick="openModal(this.src)"
+        />
+        <img
+          loading="lazy"
+          decoding="async"
+          src="https://res.cloudinary.com/dbtmgo0zj/image/upload/f_auto,q_auto,w_600/v1770687311/design11_hcdqpb.webp"
+          onclick="openModal(this.src)"
+        />
+        <img
+          loading="lazy"
+          decoding="async"
+          src="https://res.cloudinary.com/dbtmgo0zj/image/upload/f_auto,q_auto,w_600/v1770687311/design2_yf9iq8.webp"
+          onclick="openModal(this.src)"
+        />
+        <img
+          loading="lazy"
+          decoding="async"
+          src="https://res.cloudinary.com/dbtmgo0zj/image/upload/f_auto,q_auto,w_600/v1770687311/design4_femfq2.webp"
+          onclick="openModal(this.src)"
+        />
+      </div>
+    </section>
+
+    <section id="portfolio">
+      <h2 class="section-title">Animated Images</h2>
+
+      <div class="grid">
+        <img
+          loading="lazy"
+          decoding="async"
+          src="https://res.cloudinary.com/deo45saux/image/upload/f_auto,q_auto,w_600/v1771890738/m1_kwu8xd.png"
+          onclick="openModal(this.src)"
+        />
+        <img
+          loading="lazy"
+          decoding="async"
+          src="https://res.cloudinary.com/deo45saux/image/upload/f_auto,q_auto,w_600/v1771890734/h1_rwtrbs.png"
+          onclick="openModal(this.src)"
+        />
+        <img
+          loading="lazy"
+          decoding="async"
+          src="https://res.cloudinary.com/dbtmgo0zj/image/upload/f_auto,q_auto,w_600/v1770687311/designd_1_hlbpiq.webp"
+          onclick="openModal(this.src)"
+        />
+        <img
+          loading="lazy"
+          decoding="async"
+          src="https://res.cloudinary.com/dbtmgo0zj/image/upload/f_auto,q_auto,w_600/v1770687311/designc_1_eyfwm6.webp"
+          onclick="openModal(this.src)"
+        />
+        <img
+          loading="lazy"
+          decoding="async"
+          src="https://res.cloudinary.com/dbtmgo0zj/image/upload/f_auto,q_auto,w_600/v1770687311/s5a_1_d6mbzd.webp"
+          onclick="openModal(this.src)"
+        />
+        <img
+          loading="lazy"
+          decoding="async"
+          src="https://res.cloudinary.com/dbtmgo0zj/image/upload/f_auto,q_auto,w_600/v1770687311/ani_lpagld.webp"
+          onclick="openModal(this.src)"
+        />
+        <img
+          loading="lazy"
+          decoding="async"
+          src="https://res.cloudinary.com/dbtmgo0zj/image/upload/f_auto,q_auto,w_600/v1770687311/ani1_mtbjgt.webp"
+          onclick="openModal(this.src)"
+        />
+      </div>
+    </section>
+
+    <!-- VIDEOS -->
+    <section id="videos">
+      <h2 class="section-title">Latest Animations</h2>
+
+      <div class="grid">
+        <div class="video-card">
+          <img
+            loading="lazy"
+            decoding="async"
+            src="https://img.youtube.com/vi/386ej72GYa0/hqdefault.jpg"
+          />
+          <div class="video-content">
+            <h3>
+              Alhamdulillah – Kwesi Arthur ft Black Sherif & Big Hommie Flee
+              Official 3D Animated Music Video
+            </h3>
+            <a
+              class="watch"
+              target="_blank"
+              href="https://www.youtube.com/watch?v=386ej72GYa0"
+              >Watch</a
+            >
+          </div>
+        </div>
+
+        <div class="video-card">
+          <img
+            loading="lazy"
+            decoding="async"
+            src="https://img.youtube.com/vi/-8uIM31sBos/hqdefault.jpg"
+          />
+          <div class="video-content">
+            <h3>
+              Black Sherif – Top of the Morning 3D Animated Visual | Fan Made
+            </h3>
+            <a
+              class="watch"
+              target="_blank"
+              href="https://www.youtube.com/watch?v=-8uIM31sBos"
+              >Watch</a
+            >
+          </div>
+        </div>
+
+        <div class="video-card">
+          <img
+            loading="lazy"
+            decoding="async"
+            src="https://img.youtube.com/vi/9y1UjqN8I2w/hqdefault.jpg"
+          />
+          <div class="video-content">
+            <h3>Rich Billionaire Fell in Love With a Mad Woman</h3>
+            <a
+              class="watch"
+              target="_blank"
+              href="https://www.youtube.com/watch?v=9y1UjqN8I2w"
+              >Watch</a
+            >
+          </div>
+        </div>
+
+        <div class="video-card">
+          <img
+            loading="lazy"
+            decoding="async"
+            src="https://img.youtube.com/vi/xyWfuewv3wI/hqdefault.jpg"
+          />
+          <div class="video-content">
+            <h3>Chrono Link: The Future of Humanity</h3>
+            <a class="watch" target="_blank" href="https://youtu.be/xyWfuewv3wI"
+              >Watch</a
+            >
+          </div>
+        </div>
+
+        <div class="video-card">
+          <img
+            loading="lazy"
+            decoding="async"
+            src="https://img.youtube.com/vi/S49paqxE6T0/hqdefault.jpg"
+          />
+          <div class="video-content">
+            <h3>Chrono Link: Seconds Before Tomorrow</h3>
+            <a class="watch" target="_blank" href="https://youtu.be/S49paqxE6T0"
+              >Watch</a
+            >
+          </div>
+        </div>
+
+        <div class="video-card">
+          <img
+            loading="lazy"
+            decoding="async"
+            src="https://img.youtube.com/vi/9pD5hQNStpo/hqdefault.jpg"
+          />
+          <div class="video-content">
+            <h3>Love Under the Baobab Tree</h3>
+            <a class="watch" target="_blank" href="https://youtu.be/9pD5hQNStpo"
+              >Watch</a
+            >
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MODAL -->
+    <div class="modal" id="modal">
+      <span class="close" onclick="closeModal()">✕</span>
+      <img id="modalImg" />
+    </div>
+
+    <a href="https://wa.me/233534023396" class="whatsapp-float" target="_blank"
+      >💬</a
+    >
+
+    <!-- CONTACT -->
+    <section id="contact">
+      <h2 class="section-title">Contact Us</h2>
+
+      <div class="contact-box">
+        <h3>Let’s Build Something Amazing Together 🚀</h3>
+        <p>
+          Have a project in mind? Reach out and let’s create premium visuals for
+          your brand.
+        </p>
+
+        <a href="https://wa.me/233534023396" target="_blank">
+          <button class="contact-btn">Message Us on WhatsApp</button>
+        </a>
+      </div>
+    </section>
+
+    <footer>© 2026 Sky Creatives</footer>
+
+    <script>
+      /* Modal */
+      const modal = document.getElementById('modal');
+      const modalImg = document.getElementById('modalImg');
+
+      function openModal(src) {
+        modal.style.display = 'flex';
+        modalImg.src = src;
+      }
+
+      function closeModal() {
+        modal.style.display = 'none';
+      }
+      /* Scroll Reveal Animation */
+      const sections = document.querySelectorAll('section');
+
+      const revealOnScroll = () => {
+        const triggerBottom = window.innerHeight * 0.85;
+
+        sections.forEach((section) => {
+          const sectionTop = section.getBoundingClientRect().top;
+
+          if (sectionTop < triggerBottom) {
+            section.classList.add('show');
+          }
+        });
+      };
+      /* Subtle Parallax Scroll */
+      window.addEventListener('scroll', () => {
+        const scrollY = window.scrollY;
+        document.querySelector('.hero').style.backgroundPosition =
+          `center ${scrollY * 0.3}px`;
+      });
+      /* 3D Card Tilt Effect */
+      const cards = document.querySelectorAll('.video-card');
+
+      cards.forEach((card) => {
+        card.addEventListener('mousemove', (e) => {
+          const rect = card.getBoundingClientRect();
+          const x = e.clientX - rect.left;
+          const y = e.clientY - rect.top;
+
+          const centerX = rect.width / 2;
+          const centerY = rect.height / 2;
+
+          const rotateX = -(y - centerY) / 15;
+          const rotateY = (x - centerX) / 15;
+
+          card.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.03)`;
+        });
+
+        card.addEventListener('mouseleave', () => {
+          card.style.transform = 'rotateX(0) rotateY(0) scale(1)';
+        });
+      });
+      window.addEventListener('scroll', revealOnScroll);
+      window.addEventListener('load', revealOnScroll);
+    </script>
+  </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
