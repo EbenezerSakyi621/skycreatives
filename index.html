@@ -89,7 +89,10 @@
       .hero-content {
         max-width: 720px;
       }
-
+      .hero-content h2 {
+        margin-left: 4.5rem;
+        font-size: 2.8rem;
+      }
       .hero h1 {
         font-size: 2.8rem;
         margin-bottom: 10px;
@@ -529,7 +532,7 @@
         animation-delay: 2.2s;
       }
 
-      .loader-logo {
+      .lg {
         font-size: 2rem;
         letter-spacing: 4px;
         font-weight: 700;
@@ -537,8 +540,8 @@
         animation: logoReveal 2s ease forwards;
       }
 
-      .loader-logo span {
-        color: #38bdf8;
+      .lg span {
+        color: #034866;
       }
 
       @keyframes logoReveal {
@@ -558,6 +561,43 @@
           visibility: hidden;
         }
       }
+      /* ============================== */
+      /* 🌌 IMAX STARFIELD */
+      /* ============================== */
+
+      #starfield {
+        position: fixed;
+        inset: 0;
+        z-index: -1;
+        background: #000814;
+      }
+      /* ============================== */
+      /* 🎞 TRAILER TEXT EFFECT */
+      /* ============================== */
+
+      .hero h1 {
+        overflow: hidden;
+        white-space: nowrap;
+        border-right: 3px solid #38bdf8;
+        animation:
+          typing 3s steps(40, end),
+          blink 0.8s infinite;
+      }
+
+      @keyframes typing {
+        from {
+          width: 0;
+        }
+        to {
+          width: 100%;
+        }
+      }
+
+      @keyframes blink {
+        50% {
+          border-color: transparent;
+        }
+      }
     </style>
   </head>
 
@@ -565,9 +605,6 @@
     <!-- NAV -->
 
     <nav>
-      <h2 style="letter-spacing: 2px; font-weight: 700">
-        SKY<span style="color: #38bdf8">CREATIVES</span>
-      </h2>
       <div>
         <a href="#portfolio">Portfolio</a>
         <a href="#videos">Videos</a>
@@ -575,12 +612,17 @@
       </div>
     </nav>
     <div id="cinemaLoader">
-      <div class="loader-logo">SKY<span>CREATIVES</span></div>
+      <div class="lg">SKY<span>CREATIVES</span></div>
     </div>
+    <canvas id="starfield"></canvas>
     <!-- HERO -->
+    <div></div>
     <div class="hero">
       <div class="hero-content">
-        <h1>We Create Cinematic Visual Experiences</h1>
+        <h2 style="letter-spacing: 2px; font-weight: 1000">
+          SKY<span style="color: #11afe4">CREATIVES</span>
+        </h2>
+        <h2>We Create Cinematic Visual Experiences</h2>
         <p>Premium design, branding, and 3D animation studio.</p>
 
         <button
@@ -932,6 +974,57 @@
           card.style.transform = 'rotateX(0) rotateY(0) scale(1)';
         });
       });
+      /* ============================== */
+      /* 🌠 STARFIELD ENGINE */
+      /* ============================== */
+
+      const canvas = document.getElementById('starfield');
+      const ctx = canvas.getContext('2d');
+
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+
+      let stars = [];
+
+      for (let i = 0; i < 400; i++) {
+        stars.push({
+          x: Math.random() * canvas.width,
+          y: Math.random() * canvas.height,
+          z: Math.random() * canvas.width,
+        });
+      }
+
+      function animateStars() {
+        ctx.fillStyle = '#000814';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+        for (let star of stars) {
+          star.z -= 2;
+          if (star.z <= 0) {
+            star.z = canvas.width;
+          }
+
+          let k = 128.0 / star.z;
+          let px = star.x * k + canvas.width / 2;
+          let py = star.y * k + canvas.height / 2;
+
+          if (px >= 0 && px <= canvas.width && py >= 0 && py <= canvas.height) {
+            let size = (1 - star.z / canvas.width) * 3;
+            ctx.fillStyle = 'white';
+            ctx.fillRect(px, py, size, size);
+          }
+        }
+
+        requestAnimationFrame(animateStars);
+      }
+
+      animateStars();
+
+      window.addEventListener('resize', () => {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+      });
+
       window.addEventListener('scroll', revealOnScroll);
       window.addEventListener('load', revealOnScroll);
     </script>
